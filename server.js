@@ -15,22 +15,29 @@ opentok = new OpenTok( process.env.apiKey, process.env.apiSecret );
 app.set( 'port', process.env.PORT || 3000 );
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/files'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true } ));
+
 
 opentok.createSession(function( err, session ) {
   if ( err ) throw err;
   app.set('sessionId', session.sessionId);
   // init is the callback to invoke the app
+  console.log(session.sessionId )
   init();
 });
 
- app.get('/', function( req, res ){
+app.get('/', function( req, res ){
     streamAuth =  { apiKey: process.env.apiKey, sessionId: process.env.apiSecret, token: process.env.token }
-    console.log( )
+    console.log( "here")
     res.sendfile( streamAuth );
-    });
+})
+
+
+
 
 
 function init() {
