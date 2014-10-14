@@ -2,12 +2,8 @@ var express = require('express')
  ,  http = require('http')
  ,  path = require('path')
  ,  debug = require('debug')('server')
- ,  mongoose = require('mongoose')
  ,  bodyParser = require('body-parser')
- ,  methodOverride = require('method-override')
  ,  app = express();
-
-
 
 app.set( 'port', process.env.PORT || 3000 );
 
