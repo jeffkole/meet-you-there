@@ -1,26 +1,21 @@
-/** @jsx React.DOM */
-
 // components can persist state data
 // this data can be accessed by : this.state
 // when this data changes, it can be re-rendered by : render()
 // this.props can take input data
 var SessionTimer = React.createClass({displayName: 'timerClass',
-  getInitialState: function() {
+  getInitialState : function() {
     return { secondsElapsed: 0 };
   },
-  tickTock: function() {
-    console.log( this )
-    console.log( this.state )
+  tickTock : function() {
     this.setState({ secondsElapsed: this.state.secondsElapsed + 1 });
   },
-  componentDidMount: function() {
-    console.log( this.interval )
+  componentDidMount : function() {
     this.interval = setInterval( this.tickTock, 1000 );
   },
-  componentWillUnmount: function() {
+  componentWillUnmount : function() {
     clearInterval( this.interval );
   },
-  render: function() {
+  render : function() {
     console.log( this.state )
     return (
       React.DOM.div(null, "Class has been in session for ", this.state.secondsElapsed, " seconds")
