@@ -16,7 +16,6 @@ var SessionTimer = React.createClass({displayName: 'timerClass',
     clearInterval( this.interval );
   },
   render : function() {
-    console.log( this.state )
     return (
       React.DOM.div(null, "Class has been in session for ", this.state.secondsElapsed, " seconds")
     );

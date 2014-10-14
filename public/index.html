@@ -10,19 +10,13 @@
     <title>react-dot-stream</title>
 
     <!-- BEGIN BOOTSTRAP CORE, FONTS, FONT TOTALLY AWESOME -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="css/main.css" rel="stylesheet">
     <!-- END BOOTSTRAP CORE, FONTS, FONT TOTALLY AWESOME -->
 
-    <!-- BEGIN REACT FOR DEVELOPMENT -->
-   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
-   <script type="text/jsx" src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/JSXTransformer.js"></script>
-   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react-with-addons.js"></script>
-   <script src="/bower_components/react-bootstrap/react-bootstrap.min.js"></script>
-    <!-- END REACT FOR DEVELPMENT -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,25 +26,25 @@
 
 </head>
   <body>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li class="active"><a href="#home" role="tab"data-reactid=".r[3ujcb]">Home</a></li>
-  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
-</ul>
+<div class="container-full">
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane fade active in" data-reactid=".r[3ujcb].[1]"></div>
-  <!-- <div class="tab-pane fade active in" data-reactid=".1s.1.$=1$2:$2">TabPane 2 content</div> -->
-  <div class="tab-pane active" data-reactid=".r[3ujcb].[1].[0]">hello</div>
-  <div class="tab-pane" id="profile">...</div>
-  <div class="tab-pane" id="messages">...</div>
-  <div class="tab-pane" id="settings">...</div>
-</div>
-    <div id="navBar"></div>
-    <div id="timer"></div>
+      <div class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+          <li ><a href="#">courses</a></li>
+          <li><a href="#">teachers</a></li>
+          <li><a href="#">schedules</a></li>
+          <li><a href="#">learn more</a></li>
+          <li><a href="#">contact</a></li>
+        </ul>
+      </div>
+
+      <div class="jumbotron text-center">
+            <div id="timer"></div>
+      </div>
+
+
+</div> <!-- /container full -->
+
 
 
       <!--[if lt IE 9]>
@@ -60,13 +54,21 @@
   <![endif]-->
 
     <!-- BEGIN VEDOR SCRIPTS | NOTE : JQUERY NOT NECCESSARY FOR REACT -->
-   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="/bower_components/react/react.min.js"></script>
+        <script src="/bower_components/react/JSXTransformer.js"></script>
+        <script src="/bower_components/react/react-with-addons.min.js"></script>
+        <script src="/bower_components/react-bootstrap/react-bootstrap.min.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>
+        <script src="/bower_components/Cookies/src/cookies.js"></script>
+        <script src="/bower_components/moment/moment.js"></script>
+        <script src="/bower_components/es5-shim/es5-shim.js"></script>
+        <script src="/bower_components/es6-shim/es6-shim.js"></script>
     <!-- END VENDOR SCRIPTS | NOTE : JQUERY NOT NECESSARY FOR REACT -->
 
     <!-- BEGIN DEVELOPER SCRIPTS -->
    <script type="text/javascript" src="js/sessionTimer.js"></script>
-   <script type="text/jsx" src="js/navBarLink.js"></script>
     <!-- END DEVELOPER SCRIPTS -->
   </body>
 </html>
