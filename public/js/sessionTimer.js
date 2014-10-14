@@ -4,7 +4,7 @@
 // this data can be accessed by : this.state
 // when this data changes, it can be re-rendered by : render()
 // this.props can take input data
-var TimerComponent = React.createClass({displayName: 'timerClass',
+var SessionTimer = React.createClass({displayName: 'timerClass',
   getInitialState: function() {
     return { secondsElapsed: 0 };
   },
@@ -28,4 +28,4 @@ var TimerComponent = React.createClass({displayName: 'timerClass',
   }
 });
 
-React.renderComponent( TimerComponent( null ), document.getElementById('timer') );
+React.renderComponent( SessionTimer( null ), document.getElementById('timer') );
