@@ -21,7 +21,7 @@
    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
    <script type="text/jsx" src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/JSXTransformer.js"></script>
    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react-with-addons.js"></script>
-   <script src="path/to/react-bootstrap-bower/react-bootstrap.min.js"></script>
+   <script src="/bower_components/react-bootstrap/react-bootstrap.min.js"></script>
     <!-- END REACT FOR DEVELPMENT -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,8 +32,23 @@
 
 </head>
   <body>
-    <a href=""></a>
-    <div class="commentBox"></div>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#home" role="tab"data-reactid=".r[3ujcb]">Home</a></li>
+  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade active in" data-reactid=".r[3ujcb].[1]"></div>
+  <!-- <div class="tab-pane fade active in" data-reactid=".1s.1.$=1$2:$2">TabPane 2 content</div> -->
+  <div class="tab-pane active" data-reactid=".r[3ujcb].[1].[0]">hello</div>
+  <div class="tab-pane" id="profile">...</div>
+  <div class="tab-pane" id="messages">...</div>
+  <div class="tab-pane" id="settings">...</div>
+</div>
     <div id="navBar"></div>
     <div id="timer"></div>
 
@@ -51,7 +66,7 @@
 
     <!-- BEGIN DEVELOPER SCRIPTS -->
    <script type="text/javascript" src="js/sessionTimer.js"></script>
-   <script type="text/javascript" src="js/navBarLink.jsx"></script>
+   <script type="text/jsx" src="js/navBarLink.js"></script>
     <!-- END DEVELOPER SCRIPTS -->
   </body>
 </html>
