@@ -1,43 +1,41 @@
-var express = require('express'),
-    OpenTok = require('opentok'),
-    dotenv = require('dotenv')
-    dotenv.load()
+var express = require('express')
+  , http = require('http')
+  , OpenTok = require('opentok')
+  , dotenv = require('dotenv')
+  , app = express()
+    dotenv.load();
 
 
-// Verify that the API Key and API Secret are defined
-var apiKey = process.env.KEY,
-    apiSecret = process.env.SECRET;
-if (!apiKey || !apiSecret) {
-  console.log('You must specify API_KEY and API_SECRET environment variables');
-  process.exit(1);
-}
+var API = [ process.env.KEY, process.env.SECRET ]
 
-var app = express();
+app.set( 'port', process.env.PORT || 3000 );
 app.use(express.static(__dirname + '/public'));
 
-var opentok = new OpenTok(apiKey, apiSecret);
+// create new OpenTok instance
+var opentok = new OpenTok( API[0], API[1] );
 
-opentok.createSession(function(err, session) {
-  if (err) throw err;
-  app.set('sessionId', session.sessionId);
-  init();
+// create new OpenTok session, init server on session-success
+opentok.createSession(function( err, session ) {
+  if ( err ) throw err;
+  app.set( 'sessionId', session.sessionId );
+  callback();
 });
 
-app.get('/', function(req, res) {
+app.get('/', function( req, res ) {
   var sessionId = app.get('sessionId'),
-      // generate a fresh token for this client
-      token = opentok.generateToken(sessionId);
+      // creates a new token for client-connect
+      token = opentok.generateToken( sessionId );
 
   res.render('index.ejs', {
-    apiKey: apiKey,
+    apiKey: API[0],
     sessionId: sessionId,
     token: token
   });
 });
 
-// Start the express app
-function init() {
-  app.listen(3000, function() {
-    console.log('You\'re app is now ready at http://localhost:3000/');
-  });
+
+function callback() {
+var server = app.listen( app.get( 'port' ), function() {
+  console.log( "Server listening on port", server.address().port  )
+})
 }
