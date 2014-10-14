@@ -1,14 +1,14 @@
-* {
-    padding:0;
-    margin:0;
+.container-full {
+  margin: 0 auto;
+  width: 100%;
 }
 
-html{
-    font:14px normal Arial, sans-serif;
-    color:#626771;
+.navbar-brand ,.navbar-nav>li>a {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-
-body{
-    padding:60px;
-    text-align: center;
+.navbar-nav>.active>a {
+    opacity:.6;
 }
