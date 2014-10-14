@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,50 +26,84 @@
     <![endif]-->
 
 </head>
-  <body>
-<div class="container-full">
 
-      <div class="navbar navbar-default">
-        <ul class="nav navbar-nav">
-          <li ><a href="#">courses</a></li>
-          <li><a href="#">teachers</a></li>
-          <li><a href="#">schedules</a></li>
-          <li><a href="#">learn more</a></li>
-          <li><a href="#">contact</a></li>
-        </ul>
-      </div>
+<body>
 
-      <div class="jumbotron text-center">
+    <div class="container-full">
+        <div class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="#">courses</a>
+                </li>
+                <li><a href="#">teachers</a>
+                </li>
+                <li><a href="#">schedules</a>
+                </li>
+                <li><a href="#">learn more</a>
+                </li>
+                <li><a href="#">contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="jumbotron text-center">
             <div id="timer"></div>
-      </div>
+
+    <div id='myPublisherDiv'></div>
+    <div id='subscribersDiv'></div>
+
+    <script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>
+    <script>
+    var apiKey = '45028452';
+    var sessionId = '1_MX40NTAyODQ1Mn5-MTQxMzI0NDY5NDg1M35hV25Ceit2ZFkzSWRFeWFxRU9oWTY5U3l-fg';
+    var token = 'T1==cGFydG5lcl9pZD00NTAyODQ1MiZzaWc9ODNjZjA0MTZmNDVmMDA1Yzc2ZDM2ZDNmZDMyMWQxYjIwNTNjNmE5Zjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5UQXlPRFExTW41LU1UUXhNekkwTkRZNU5EZzFNMzVoVjI1Q2VpdDJaRmt6U1dSRmVXRnhSVTlvV1RZNVUzbC1mZyZjcmVhdGVfdGltZT0xNDEzMjYzNDM4Jm5vbmNlPTAuMTg0NzQxMzYwOTg4NTM1MzM=';
+    var session = OT.initSession(apiKey, sessionId);
+    session.on({
+        streamCreated: function(event) {
+            session.subscribe(event.stream, 'subscribersDiv', {
+                insertMode: 'append'
+            });
+        }
+    });
+    session.connect(token, function(error) {
+        if (error) {
+            console.log(error.message);
+        } else {
+            session.publish('myPublisherDiv', {
+                width: 320,
+                height: 240
+            });
+        }
+    });
+    </script>
+    </div>
+        </div>
+
+    <!-- /container full -->
 
 
-</div> <!-- /container full -->
 
-
-
-      <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-sham.js"></script>
   <![endif]-->
 
     <!-- BEGIN VEDOR SCRIPTS | NOTE : JQUERY NOT NECCESSARY FOR REACT -->
-        <script src="/bower_components/react/react.min.js"></script>
-        <script src="/bower_components/react/JSXTransformer.js"></script>
-        <script src="/bower_components/react/react-with-addons.min.js"></script>
-        <script src="/bower_components/react-bootstrap/react-bootstrap.min.js"></script>
-        <script src="/bower_components/jquery/dist/jquery.js"></script>
-        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>
-        <script src="/bower_components/Cookies/src/cookies.js"></script>
-        <script src="/bower_components/moment/moment.js"></script>
-        <script src="/bower_components/es5-shim/es5-shim.js"></script>
-        <script src="/bower_components/es6-shim/es6-shim.js"></script>
+    <script src="/bower_components/react/react.min.js"></script>
+    <script src="/bower_components/react/JSXTransformer.js"></script>
+    <script src="/bower_components/react/react-with-addons.min.js"></script>
+    <script src="/bower_components/react-bootstrap/react-bootstrap.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/Cookies/src/cookies.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/es5-shim/es5-shim.js"></script>
+    <script src="/bower_components/es6-shim/es6-shim.js"></script>
     <!-- END VENDOR SCRIPTS | NOTE : JQUERY NOT NECESSARY FOR REACT -->
 
     <!-- BEGIN DEVELOPER SCRIPTS -->
-   <script type="text/javascript" src="js/sessionTimer.js"></script>
+    <script type="text/javascript" src="js/sessionTimer.js"></script>
     <!-- END DEVELOPER SCRIPTS -->
-  </body>
+</body>
+
 </html>
