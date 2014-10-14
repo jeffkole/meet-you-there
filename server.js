@@ -1,30 +1,25 @@
-var express = require('express')
- ,  http = require('http')
- ,  path = require('path')
- ,  debug = require('debug')('server')
- ,  bodyParser = require('body-parser')
- ,  ejs = require('ejs')
- ,  dotenv = require('dotenv')
- ,  OpenTok = require('opentok')
- ,  app = express();
+var express = require('express'),
+    OpenTok = require('opentok'),
+    dotenv = require('dotenv')
+    dotenv.load()
 
-dotenv.load();
 
-app.set('view engine', 'ejs');
-app.set( 'port', process.env.PORT || 3000 );
+// Verify that the API Key and API Secret are defined
+var apiKey = process.env.KEY,
+    apiSecret = process.env.SECRET;
+if (!apiKey || !apiSecret) {
+  console.log('You must specify API_KEY and API_SECRET environment variables');
+  process.exit(1);
+}
+
+var app = express();
 app.use(express.static(__dirname + '/public'));
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-app.use( bodyParser.json() );
-app.use( bodyParser.urlencoded({ extended: true } ));
 
-// init OpenTok
-opentok = new OpenTok( process.env.apiKey, process.env.apiSecret );
+var opentok = new OpenTok(apiKey, apiSecret);
 
-// create a session and store it in the express app
 opentok.createSession(function(err, session) {
   if (err) throw err;
   app.set('sessionId', session.sessionId);
-  // init is the callback to invoke the app
   init();
 });
 
@@ -34,17 +29,15 @@ app.get('/', function(req, res) {
       token = opentok.generateToken(sessionId);
 
   res.render('index.ejs', {
-    apiKey: process.env.apiKey,
-    sessionId: process.env.apiSecret,
-    token: process.env.token
+    apiKey: apiKey,
+    sessionId: sessionId,
+    token: token
   });
 });
 
-
+// Start the express app
 function init() {
-var server = app.listen( app.get( 'port' ), function() {
-  debug( 'Express server listening on port ' + server.address().port );
-  console.log( "Express server listening on port", server.address().port  )
-})
+  app.listen(3000, function() {
+    console.log('You\'re app is now ready at http://localhost:3000/');
+  });
 }
-exports = module.exports = app;

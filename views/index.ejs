@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-            <script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>
+    <title>OpenTok Hello World</title>
+    <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
     <script type="text/javascript">
         var apiKey = '<%= apiKey %>';
         var sessionId = '<%= sessionId %>';
         var token = '<%= token %>';
     </script>
+    <script src="/js/client.js"></script>
 </head>
 <body>
 
     <div id="publisher"></div>
+
     <div id="subscribers"></div>
 </body>
 </html>
