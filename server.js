@@ -8,36 +8,36 @@ var express = require('express')
  ,  app = express();
 
 dotenv.load();
-opentok = new OpenTok( process.env.apiKey, process.env.apiSecret );
-
 
 
 app.set( 'port', process.env.PORT || 3000 );
-
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/files'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({ extended: true } ));
 
+// init OpenTok
+opentok = new OpenTok( process.env.apiKey, process.env.apiSecret );
 
-opentok.createSession(function( err, session ) {
-  if ( err ) throw err;
+// create a session and store it in the express app
+opentok.createSession(function(err, session) {
+  if (err) throw err;
   app.set('sessionId', session.sessionId);
   // init is the callback to invoke the app
-  console.log(session.sessionId )
   init();
 });
 
-app.get('/', function( req, res ){
-    streamAuth =  { apiKey: process.env.apiKey, sessionId: process.env.apiSecret, token: process.env.token }
-    console.log( "here")
-    res.sendfile( streamAuth );
-})
+app.get('/', function(req, res) {
+  var sessionId = app.get('sessionId'),
+      // generate a fresh token for this client
+      token = opentok.generateToken(sessionId);
 
-
-
+  res.render('index.ejs', {
+    apiKey: process.env.apiKey,
+    sessionId: process.env.apiSecret,
+    token: process.env.token
+  });
+});
 
 
 function init() {
