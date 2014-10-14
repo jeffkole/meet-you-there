@@ -51,29 +51,7 @@
             <div id='subscribersDiv'></div>
 
             <script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>
-            <script>
-            var apiKey = '45028452';
-            var sessionId = '1_MX40NTAyODQ1Mn5-MTQxMzI0NDY5NDg1M35hV25Ceit2ZFkzSWRFeWFxRU9oWTY5U3l-fg';
-            var token = 'T1==cGFydG5lcl9pZD00NTAyODQ1MiZzaWc9ODNjZjA0MTZmNDVmMDA1Yzc2ZDM2ZDNmZDMyMWQxYjIwNTNjNmE5Zjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5UQXlPRFExTW41LU1UUXhNekkwTkRZNU5EZzFNMzVoVjI1Q2VpdDJaRmt6U1dSRmVXRnhSVTlvV1RZNVUzbC1mZyZjcmVhdGVfdGltZT0xNDEzMjYzNDM4Jm5vbmNlPTAuMTg0NzQxMzYwOTg4NTM1MzM=';
-            var session = OT.initSession(apiKey, sessionId);
-            session.on({
-                streamCreated: function(event) {
-                    session.subscribe(event.stream, 'subscribersDiv', {
-                        insertMode: 'append'
-                    });
-                }
-            });
-            session.connect(token, function(error) {
-                if (error) {
-                    console.log(error.message);
-                } else {
-                    session.publish('myPublisherDiv', {
-                        width: 320,
-                        height: 240
-                    });
-                }
-            });
-            </script>
+
         </div>
     </div>
 
