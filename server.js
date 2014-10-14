@@ -3,13 +3,14 @@ var express = require('express')
  ,  path = require('path')
  ,  debug = require('debug')('server')
  ,  bodyParser = require('body-parser')
+ ,  ejs = require('ejs')
  ,  dotenv = require('dotenv')
- ,   OpenTok = require('opentok')
+ ,  OpenTok = require('opentok')
  ,  app = express();
 
 dotenv.load();
 
-
+app.set('view engine', 'ejs');
 app.set( 'port', process.env.PORT || 3000 );
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
