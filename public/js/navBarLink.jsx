@@ -1,29 +1,19 @@
 /** @jsx React.DOM */
 
-var NavBarLink = React.createClass({
-  render: function() {
-    return (
-      <a href={this.props.url}>{this.props.text}</a>
-    );
-  }
-})
+var navbarInstance = (
+    <Navbar>
+      <Nav>
+        <NavItem key={1} href="#">Link</NavItem>
+        <NavItem key={2} href="#">Link</NavItem>
+        <DropdownButton key={3} title="Dropdown">
+          <MenuItem key="1">Action</MenuItem>
+          <MenuItem key="2">Another action</MenuItem>
+          <MenuItem key="3">Something else here</MenuItem>
+          <MenuItem divider />
+          <MenuItem key="4">Separated link</MenuItem>
+        </DropdownButton>
+      </Nav>
+    </Navbar>
+  );
 
-// NAV BAR DATA
-[
- {
-  "text": "courses",
-  "url": "http://localhost/3000/courses"
-  },
-  {
-  "text": "teachers",
-  "url": "http://localhost/3000/teachers"
-  },
-  {
-  "text": "how this works",
-  "url": "http://localhost/3000/how-this-works"
-   },
-   {
-  "text": "contact",
-  "url": "http://localhost/3000/contact"
- }
-]
+React.renderComponent(navbarInstance, mountNode);
