@@ -1,47 +1,40 @@
-// // Initialize an OpenTok Session object
-// window.onload = function(){
-//   bindListeners();
-// }
+if ( window.location.href == "http://localhost:3000/connect") {
+  console.log("po")
+  window.setTimeout(init, 3000)
+}
+function init(){
+var session = TB.initSession(sessionId);
 
-// function bindListeners(){
-// var streamer = document.getElementById("connect")
-// streamer.addEventListener("click", init, false)
-// }
+// Initialize a Publisher, and place it into the element with id="publisher"
+var publisher = TB.initPublisher(apiKey,
+                                   "publisher",
+                                   {width:800, height:400})
+// Attach event handlers
+session.on({
 
-// function init(){
-//   console.log('made it')
-// var session = TB.initSession(sessionId);
+  // This function runs when session.connect() asynchronously completes
+  sessionConnected: function(event) {
+    // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
+    // clients)
+    session.publish(publisher);
+     console.log(connectionCount + " connections.");
+  },
 
-// // Initialize a Publisher, and place it into the element with id="publisher"
-// var publisher = TB.initPublisher(apiKey,
-//                                    "publisher",
-//                                    {width:800, height:400})
-// // Attach event handlers
-// session.on({
+  // This function runs when another client publishes a stream (eg. session.publish())
+  streamCreated: function(event) {
+    // Create a container for a new Subscriber, assign it an id using the streamId, put it inside
+    // the element with id="subscribers"
+    var subContainer = document.createElement('div');
+    subContainer.id = 'stream-' + event.stream.streamId;
+    document.getElementById('subscribers').appendChild(subContainer);
 
-//   // This function runs when session.connect() asynchronously completes
-//   sessionConnected: function(event) {
-//     // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
-//     // clients)
-//     session.publish(publisher);
-//      console.log(connectionCount + " connections.");
-//   },
+    // Subscribe to the stream that caused this event, put it inside the container we just made
+    session.subscribe(event.stream, subContainer);
+  }
 
-//   // This function runs when another client publishes a stream (eg. session.publish())
-//   streamCreated: function(event) {
-//     // Create a container for a new Subscriber, assign it an id using the streamId, put it inside
-//     // the element with id="subscribers"
-//     var subContainer = document.createElement('div');
-//     subContainer.id = 'stream-' + event.stream.streamId;
-//     document.getElementById('subscribers').appendChild(subContainer);
+});
 
-//     // Subscribe to the stream that caused this event, put it inside the container we just made
-//     session.subscribe(event.stream, subContainer);
-//   }
+// Connect to the Session using the 'apiKey' of the application and a 'token' for permission
+session.connect(apiKey, token);
 
-// });
-
-// // Connect to the Session using the 'apiKey' of the application and a 'token' for permission
-// session.connect(apiKey, token);
-
-// }
+}

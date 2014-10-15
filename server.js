@@ -10,7 +10,20 @@ var express = require('express')
     dotenv.load();
 
 
-var API = [ process.env.KEY, process.env.SECRET ]
+var API = [ process.env.KEY, process.env.SECRET ];
+
+
+// create new OpenTok instance
+var opentok = new OpenTok( API[0], API[1] );
+
+// create new OpenTok session, init server on session-success
+opentok.createSession(function( err, session ) {
+  if ( err ) throw err;
+  app.set( 'sessionId', session.sessionId );
+  callback();
+});
+
+
 // set port, template engine
 app.set('view engine', 'ejs');
 app.set( 'port', process.env.PORT || 3000 );
@@ -23,13 +36,12 @@ app.use(cookieParser()); // read cookies ( auth )
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
 require('./router/routes.js')( app ); // load routes, pass in configured app and passport
 
 
-
+function callback() {
 // init express server
 http.createServer( app ).listen( app.get( 'port' ), function(){
   console.log( 'Express server listening on port ' + app.get( 'port' ));
 });
+}
