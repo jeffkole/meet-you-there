@@ -1,12 +1,8 @@
-// Initialize an OpenTok Session object
-var session = TB.initSession(sessionId);
-
+var session = TB.initSession( sessionId );
 // Initialize a Publisher, and place it into the element with id="publisher"
-var publisher = TB.initPublisher(apiKey, 'publisher');
-
-// Attach event handlers
+var publisher = TB.initPublisher(apiKey, "publisher", { width:800, height:400 } )
+// attach event handlers
 session.on({
-
   // This function runs when session.connect() asynchronously completes
   sessionConnected: function(event) {
     // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
@@ -29,4 +25,4 @@ session.on({
 });
 
 // Connect to the Session using the 'apiKey' of the application and a 'token' for permission
-session.connect(apiKey, token);
+session.connect( apiKey, token );
