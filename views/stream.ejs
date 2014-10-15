@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/JSXTransformer.js"></script>
@@ -9,20 +10,37 @@
     <title>Get a Room</title>
   </head>
   <body>
+ <script type="text/javascript">
+        var apiKey = '<%= apiKey %>';
+        var sessionId = '<%= sessionId %>';
+        var token = '<%= token %>';
+</script>
     <div id="welcome"></div>
-    <br>
-    <div id="navBar"></div>
-    <div id="stream"></div>
+    <!-- <div id="devicePanelContainer"></div> -->
+    <!-- <div id="publisherContainer"></div> -->
+    <p id="copyAndPaste">copy and paste link and get a room!</p>
+   <p id="roomLink" href=""><%= getARoom %></p>
+   <br>
+<input type="text" id="connectionCountField" value="0"></input>
+<br>
+<br>
 
+    <div id="navBar"></div>
+    <div id="subscribers"><div id="streamId"></div></div>
+    <div id="stream"></div>
     <script type="text/jsx">
       /** @jsx React.DOM */
       React.renderComponent(
         <h1>get a room</h1>,
         document.getElementById('welcome')
       );
+    </script>
 
-      </script>
-          <div id="stream"></div>
+    <div id="stream"></div>
+
+  <script src="/js/sessionController.js"></script>
+  <script src="/js/sessionTracker.js"></script>
+  <script src="/js/sessionPanel.js"></script>
   <script type="text/jsx" src="/js/navBar.jsx"></script>
   </body>
 </html>

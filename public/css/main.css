@@ -1,77 +1,72 @@
+html {
+    font: 14px normal Arial, sans-serif;
+    color: #626771;
+    background-color: #2b2b2b;
+}
 body {
-    overflow-x: hidden;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 20px;
+    text-align: center;
 }
-
-
-a,
-a:hover,
-a:focus,
-a:active,
-a.active {
-    outline: 0;
-    color: #18bc9c;
+#publisher {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #37ada7;
 }
-
-
-@media(min-width:768px) {
-    header .container {
-        padding-top: 200px;
-        padding-bottom: 100px;
-    }
-
-    header .intro-text .name {
-        font-size: 4.75em;
-    }
-
-    header .intro-text .skills {
-        font-size: 1.75em;
-    }
+#copyAndPaste {
+    color: #fff;
+    font-size 1.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
-
-@media(min-width:768px) {
-    .navbar-fixed-top {
-        padding: 25px 0;
-        -webkit-transition: padding .3s;
-        -moz-transition: padding .3s;
-        transition: padding .3s;
-    }
-
-    .navbar-fixed-top .navbar-brand {
-        font-size: 2em;
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
-    }
-
-    .navbar-fixed-top.navbar-shrink {
-        padding: 10px 0;
-    }
-
-    .navbar-fixed-top.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
-    }
+#roomLink {
+    color: #41C7C2;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
-
-.navbar {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+#welcome {
+    color: #41C7C2;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.2em;
 }
-
-.navbar a:focus {
-    outline: 0;
+#stream {
+    color: #41C7C2;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.2em;
 }
-
-.navbar .navbar-nav {
-    letter-spacing: 1px;
+#connectionsContainer {
+    clear: both;
+    background-color: #CCC;
+    width: 400px;
 }
-
-.navbar .navbar-nav li a:focus {
-    outline: 0;
+a {
+    text-decoration: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #41C7C2;
 }
-
-.navbar-default,
-.navbar-inverse {
-    border: 0;
+* {
+    padding: 0;
+    margin: 0;
 }
-
+ul {
+    list-style: none;
+    display: inline-block;
+}
+ul li {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #eee;
+    color: #7B8585;
+    transition: 0.3s;
+}
+ul li:hover {
+    background-color: #beecea;
+}
+ul li.focused {
+    color: #fff;
+    background-color: #41c7c2;
+}
+p {
+    padding-top: 15px;
+    font-size: 12px;
+}
