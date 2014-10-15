@@ -7,7 +7,6 @@ app.get('/', function( req, res ) {
 })
 
 app.get('/stream', function( req, res ) {
-     var ua = req.headers['user-agent'];
 
   var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
   var sessionId = app.get('sessionId');
