@@ -1,8 +1,5 @@
-API = [ process.env.KEY, process.env.SECRET ];
+var OpenTok = require('opentok')
 
-var async = require('async')
- ,  OpenTok = require('opentok')
-var opentok = new OpenTok( API[0], API[1] );
 module.exports = function( app ) {
 
 app.get('/', function( req, res ) {
@@ -11,15 +8,14 @@ app.get('/', function( req, res ) {
 
 app.get('/connect', function( req, res ) {
 
-  var sessionId = app.get('sessionId'),
-      // generate a fresh token for this client
-      token = opentok.generateToken(sessionId);
+var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
+var sessionId = app.get('sessionId');
+var token = opentok.generateToken(sessionId);
 
   res.render('connect.ejs', {
     apiKey: API[0],
     sessionId: sessionId,
     token: token
   });
-
-})
+ })
 }
