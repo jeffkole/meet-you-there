@@ -3,8 +3,8 @@ var session = TB.initSession(sessionId);
 
 // Initialize a Publisher, and place it into the element with id="publisher"
 var publisher = TB.initPublisher(apiKey,
-                                   "myPublisher",
-                                   {width:800, height:500})
+                                   "publisher",
+                                   {width:800, height:400})
 // Attach event handlers
 session.on({
 
@@ -13,6 +13,7 @@ session.on({
     // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
     // clients)
     session.publish(publisher);
+     console.log(connectionCount + " connections.");
   },
 
   // This function runs when another client publishes a stream (eg. session.publish())
@@ -31,3 +32,4 @@ session.on({
 
 // Connect to the Session using the 'apiKey' of the application and a 'token' for permission
 session.connect(apiKey, token);
+
