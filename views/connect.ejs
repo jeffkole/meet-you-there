@@ -21,7 +21,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
+ <script type="text/javascript">
+        var apiKey = '<%= apiKey %>';
+        var sessionId = '<%= sessionId %>';
+        var token = '<%= token %>';
+    </script>
     <script src="/js/stream.js"></script>
     <script src="/js/session.js"></script>
 </head>
@@ -45,7 +49,8 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                <a class="btn" href="/connect">connect</a>
+                    <input type="button" value="connect" id ="connect"/>
+                    <input type="button" value="disconnect" id ="disconnect"/>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

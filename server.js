@@ -27,28 +27,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./router/routes.js')( app ); // load routes, pass in configured app and passport
 
-// create new OpenTok instance
-// var opentok = new OpenTok( API[0], API[1] );
-
-// // create new OpenTok session, init server on session-success
-// opentok.createSession(function( err, session ) {
-//   if ( err ) throw err;
-//   app.set( 'sessionId', session.sessionId );
-//   callback();
-// });
-
-// app.get('/', function( req, res ) {
-//   var sessionId = app.get('sessionId'),
-//       // creates a new token for client-connect
-//       token = opentok.generateToken( sessionId );
-//       console.log( token )
-
-//   res.render('index.ejs', {
-//     apiKey: API[0],
-//     sessionId: sessionId,
-//     token: token
-//   });
-// });
 
 
 // init express server
