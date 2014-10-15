@@ -1,9 +1,3 @@
-// if ( window.location.href == "http://localhost:3000/connect" ) {
-//   initSession();
-// }
-
-// function initSession(){
-
 var session = TB.initSession( sessionId );
 // Initialize a Publisher, and place it into the element with id="publisher"
 var publisher = TB.initPublisher(apiKey, "publisher", { width:800, height:400 } )
@@ -32,5 +26,3 @@ session.on({
 
 // Connect to the Session using the 'apiKey' of the application and a 'token' for permission
 session.connect( apiKey, token );
-
-// }
