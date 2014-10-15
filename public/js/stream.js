@@ -1,4 +1,15 @@
 // Initialize an OpenTok Session object
+window.onload = function(){
+  bindListeners();
+}
+
+function bindListeners(){
+var streamer = document.getElementById("connect")
+streamer.addEventListener("click", init, false)
+}
+
+function init(){
+  console.log('made it')
 var session = TB.initSession(sessionId);
 
 // Initialize a Publisher, and place it into the element with id="publisher"
@@ -33,3 +44,4 @@ session.on({
 // Connect to the Session using the 'apiKey' of the application and a 'token' for permission
 session.connect(apiKey, token);
 
+}
