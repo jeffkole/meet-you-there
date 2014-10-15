@@ -10,11 +10,9 @@ SessionPanel.prototype = {
   },
  settingsButtonClickHandler : function( event ) {
     event.preventDefault();
-
     var newDiv = document.createElement('div');
     newDiv.id = 'devicePanel';
     document.getElementById('devicePanelContainer').appendChild( newDiv );
-
     deviceManager = TB.initDeviceManager( apiKey );
     devicePanel = deviceManager.displayPanel( 'devicePanel', publisher );
  }
