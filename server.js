@@ -38,18 +38,3 @@ http.createServer( app ).listen( app.get( 'port' ), function(){
   console.log( 'Express server listening on port ' + app.get( 'port' ));
 });
 }
-
-function standardSetup(request, response, type){
-  response.setHeader('Content-Type', 'text/html');
-  gv.getSessionIdAndToken(request, response, function(response, sessionId, token){
-    response.render('index_'+type, {
-      layout: 'layout_'+type,
-      locals: {
-        url: gv.urlToCopy(sessionId, type),
-        token: token,
-        sessionId: sessionId
-      }
-    });
-    response.end();
-  });
-}
