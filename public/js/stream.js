@@ -1,23 +1,19 @@
 if ( window.location.href == "http://localhost:3000/connect") {
-  console.log("po")
-  window.setTimeout(init, 3000)
+  initSession();
 }
-function init(){
-var session = TB.initSession(sessionId);
+
+function initSession(){
+var session = TB.initSession( sessionId );
 
 // Initialize a Publisher, and place it into the element with id="publisher"
-var publisher = TB.initPublisher(apiKey,
-                                   "publisher",
-                                   {width:800, height:400})
+var publisher = TB.initPublisher(apiKey, "publisher", { width:800, height:400 } )
 // Attach event handlers
 session.on({
-
   // This function runs when session.connect() asynchronously completes
   sessionConnected: function(event) {
     // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
     // clients)
     session.publish(publisher);
-     console.log(connectionCount + " connections.");
   },
 
   // This function runs when another client publishes a stream (eg. session.publish())

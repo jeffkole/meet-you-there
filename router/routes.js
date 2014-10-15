@@ -13,7 +13,7 @@ var sessionId = app.get('sessionId');
 var token = opentok.generateToken(sessionId);
 
   res.render('connect.ejs', {
-    apiKey: API[0],
+    apiKey: process.env.KEY,
     sessionId: sessionId,
     token: token
   });
