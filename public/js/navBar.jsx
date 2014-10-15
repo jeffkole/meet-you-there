@@ -21,7 +21,7 @@ var NavBar = React.createClass({
          if( index == 2 && location.href != 'http://localhost:3000/about'){
             location.href = 'http://localhost:3000/about'
         }
-  }
+  },
     render: function() {
     // context is lost to window on second return <li> and we need two different references in the call to render
     var self = this;
