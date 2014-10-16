@@ -1,9 +1,9 @@
 {
-  "name": "meet-me-there",
+  "name": "Meet-You-There",
   "version": "0.0.1",
-  "homepage": "https://github.com/scottjason/react-dot-stream",
+  "homepage": "https://github.com/scottjason/meet-you-there",
   "authors": [
-    "scottjason <scottleejason@gmail.com>"
+    "Scott Jason"
   ],
   "moduleType": [
     "globals"

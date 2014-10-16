@@ -15,7 +15,9 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
 
       this.bindListeners();
   }
-
+  // These listen for both hardware and user events.
+  // When they invoke a callback in the model, they trigger functions that cause the dispatcher to fire events.
+  // When they invoke a callback in the view, they inoke non TokBox related behavior and render on their own without the dispatcher.
 SessionControl.prototype.bindListeners = function() {
   document.getElementById( "checkDevice" ).addEventListener( "click", this.SessionModel.checkDevice, false );
   document.getElementById( "sendInvite" ).addEventListener( "click", this.SessionModel.sendInvite, false );

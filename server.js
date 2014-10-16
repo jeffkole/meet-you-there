@@ -39,5 +39,3 @@ http.createServer( app ).listen( app.get( 'port' ), function(){
   console.log( 'Express server listening on port ' + app.get( 'port' ));
 });
 }
-
-// browserify public/js/ui/calendar.js -o public/js/bundle.js
