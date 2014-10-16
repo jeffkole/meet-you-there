@@ -13,6 +13,7 @@
     "morgan": "^1.3.2",
     "opentok": "^2.2.4",
     "path": "^0.4.9",
-    "react-calendar-component": "0.0.4"
+    "react-calendar-component": "0.0.4",
+    "shorturl": "0.0.3"
   }
 }

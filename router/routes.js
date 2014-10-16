@@ -1,5 +1,6 @@
 var OpenTok = require('opentok')
-var url = require('url');
+ ,  shorturl = require('shorturl');
+
 module.exports = function( app ) {
 
 app.get('/', function( req, res ) {
@@ -11,13 +12,17 @@ app.get('/stream', function( req, res ) {
   var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
   var sessionId = app.get('sessionId');
   var token = opentok.generateToken( sessionId );
-  var getARoom = req.headers.referer + "stream/?room_id=" + sessionId;
-
+      shorturl( req.headers.referer + "stream/?room_id=" + sessionId, function( result ) {
+      render( result )
+});
+      function render( result ) {
   res.render('stream.ejs', {
     apiKey: process.env.KEY,
     sessionId: sessionId,
     token: token,
-    getARoom: getARoom
+    getARoom: result
   });
+}
+
  })
 }
