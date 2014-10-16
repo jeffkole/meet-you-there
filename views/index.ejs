@@ -6,7 +6,7 @@
       <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
       <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"></script>
-    <title>Meet Me There</title>
+    <title>Meet You There</title>
   </head>
   <body>
 
@@ -20,14 +20,25 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="nav navbar-nav">
-         <!-- BEGIN USER GREETING AND REACT NAV BAR -->
+         <!-- BEGIN TITLE AND REACT NAV BAR -->
         <a href="/" id="welcome"></a>
          <a  id="navBar"></a>
-         <!-- END USER GREETING AND REACT NAV BAR -->
+         <!-- END TITLE AND REACT NAV BAR -->
       </div>
     </div>
   </div>
 </nav>
+
+<div class="jumbotron">
+  <div class="innerContentDiv">
+  <h3 id="meetJumboTitle">Meet You There</h3>
+  <div id="meetJumboContent">
+
+</div>
+</div id="signUp">
+</div>
+
+
     <!-- BEGIN BOWER SCRIPTS -->
   <script type="text/javascript" src="/bower_components/react/react.js"></script>
   <script type="text/javascript" src="/bower_components/react/JSXTransformer.js"></script>
@@ -37,8 +48,9 @@
     <!-- END BOWER SCRIPTS -->
 
     <!-- BEGIN DEVELOPER SCRIPTS -->
-  <script type="text/jsx" src="/js/ui/navBar.jsx"></script>
-  <script type="text/jsx" src="/js/ui/dynamicText.jsx"></script>
+  <script type="text/jsx" src="/js/ui/renderNav.jsx"></script>
+  <script type="text/jsx" src="/js/ui/renderSlogan.jsx"></script>
+  <script type="text/jsx" src="/js/ui/greetUser.jsx"></script>
     <!-- END DEVELOPER SCRIPTS -->
   </body>
 </html>
