@@ -1,6 +1,6 @@
     /** @jsx React.DOM */
 React.renderComponent(
-  <h1>get a room</h1>,
+  <h3>Meet Me There</h3>,
     document.getElementById('welcome')
   );
 

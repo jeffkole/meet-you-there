@@ -18,7 +18,11 @@ var NavBar = React.createClass({
          if( index == 1 && location.href != 'http://localhost:3000/stream'){
             location.href = 'http://localhost:3000/stream'
         }
-         if( index == 2 && location.href != 'http://localhost:3000/about'){
+         if( index == 2 && location.href != 'http://localhost:3000/reserve'){
+            location.href = 'http://localhost:3000/reserve'
+        }
+
+        if( index == 3 && location.href != 'http://localhost:3000/about'){
             location.href = 'http://localhost:3000/about'
         }
   },
@@ -41,7 +45,6 @@ var NavBar = React.createClass({
 
                 </ul>
 
-                <p>Selected: { this.props.navItems[this.state.focused] }</p>
             </div>
         );
 
@@ -49,7 +52,7 @@ var NavBar = React.createClass({
 });
 
 React.renderComponent(
-    <NavBar navItems={ ['Home', 'Stream', 'About'] } />,
+    <NavBar navItems={ ['Home', 'Stream Now', 'Make Reservations ', 'About'] } />,
     document.getElementById("navBar")
 );
 
