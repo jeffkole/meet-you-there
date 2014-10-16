@@ -10,36 +10,35 @@
     <title>Get a Room</title>
   </head>
   <body>
+
  <script type="text/javascript">
         var apiKey = '<%= apiKey %>';
         var sessionId = '<%= sessionId %>';
         var token = '<%= token %>';
 </script>
+
+    <!-- USER GREETING -->
     <div id="welcome"></div>
-    <!-- <div id="devicePanelContainer"></div> -->
-    <!-- <div id="publisherContainer"></div> -->
-    <p id="copyAndPaste">copy and paste link and get a room!</p>
-   <p id="roomLink" href=""><%= getARoom %></p>
-   <br>
-<input type="text" id="connectionCountField" value="0"></input>
-<br>
-<br>
-
+    <!-- STREAM LINK STATIC -->
+    <p id="copyAndPaste">copy and paste the link and get a room!</p>
+    <!-- STREAM LINK PARTIAL -->
+    <p id="roomLink" href=""><%= getARoom %></p>
+    <br>
+    <!-- SUBSCRIBER COUNT -->
+    <input type="text" id="connectionCountField" value="0"></input>
+    <br>
+    <br>
+    <!-- NAV BAR -->
     <div id="navBar"></div>
+    <!-- STREAM LINK -->
     <div id="subscribers"><div id="streamId"></div></div>
-    <script type="text/jsx">
-      /** @jsx React.DOM */
-      React.renderComponent(
-        <h1>get a room</h1>,
-        document.getElementById('welcome')
-      );
-    </script>
-
+    <!-- STREAM -->
     <div id="stream"></div>
 
   <script type="text/javascript" src="/js/sessions/sessionController.js"></script>
   <script type="text/javascript" src="/js/sessions/sessionTracker.js"></script>
   <script type="text/javascript" src="/js/sessions/sessionPanel.js"></script>
   <script type="text/jsx" src="/js/ui/navBar.jsx"></script>
+  <script type="text/jsx" src="/js/ui/userGreeting.jsx"></script>
   </body>
 </html>
