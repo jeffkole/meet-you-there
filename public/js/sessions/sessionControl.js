@@ -25,13 +25,13 @@ SessionControl.prototype.bindListeners = function() {
   document.getElementById( "stopRecording" ).addEventListener( "click", this.SessionModel.stopRecording, false );
   document.getElementById( "endSession" ).addEventListener( "click", this.SessionModel.endSession, false );
   }
-
+// all of the below function are handlers that respond when the dispatcher fires
 SessionControl.prototype.sessionStart = function() {
   this.publisher = TB.initPublisher( apiKey, "publisher", { width:800, height:400 } )
   this.session.connect( apiKey, token );
   }
 
-// the below function are handlers that respond when the dispatcher fires
+
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
       this.SessionView.renderGreeting( this.session );
