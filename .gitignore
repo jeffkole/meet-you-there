@@ -3,8 +3,11 @@ log
 .env
 env
 .DS_STORE
-/node_modules
 /npm-debug.log
+
+/node_modules
+node_modules
+node_modules/
 /bower_components
-/bower.json
-/component.json
+bower_components
+bower_components/

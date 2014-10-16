@@ -3,11 +3,13 @@ function SessionView() {
         return new SessionView()
 };
 
-SessionView.prototype.initialize = function() {};
+SessionView.prototype.initialize = function( controller ) {
+    this.session = controller.session;
+};
 
-SessionView.prototype.renderGreeting = function( session ) {
+SessionView.prototype.renderGreeting = function() {
   console.log("greet user")
-  console.log( session )
+  console.log( this.session )
 };
 
 SessionView.prototype.collectLogin = function() {};
