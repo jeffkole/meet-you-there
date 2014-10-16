@@ -3,11 +3,13 @@ function SessionModel() {
         return new SessionModel()
 };
 
-SessionModel.prototype.initialize = function( session ) {
-  this.session = session;
+SessionModel.prototype.initialize = function( controller ) {
+  this.session = controller.session;
 }
 
-SessionModel.prototype.checkDevice = function() {};
+SessionModel.prototype.checkDevice = function() {
+  console.log( this.session )
+};
 
 SessionModel.prototype.sendInvite = function() {};
 

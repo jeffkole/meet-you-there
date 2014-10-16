@@ -4,12 +4,12 @@ function SessionDispatch() {
 };
 
 
-SessionDispatch.prototype.initialize = function( controller ) {
+SessionDispatch.prototype.initialize = function()  {
   // the function we're been has been invoked via call(), so "this" references the calling function ( the controller )
   // first arg is the event, second the handler, third the conext
-  this.session.on( "sessionConnected", controller.sessionConnected, this );
-  this.session.on( "sessionDisconnected", controller.sessionDisconnected, this );
-    controller.sessionStart( this.session );
+  this.session.on( "sessionConnected", this.sessionConnected, this );
+  this.session.on( "sessionDisconnected", this.sessionDisconnected, this );
+    this.sessionStart();
   }
 
 var sessionDispatch = new SessionDispatch();
