@@ -1,0 +1,24 @@
+{
+  "name": "react-dot-stream",
+  "version": "0.0.0",
+  "homepage": "https://github.com/scottjason/react-dot-stream",
+  "authors": [
+    "scottjason <scottleejason@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "clndr": "~1.2.3",
+    "underscore": "~1.7.0",
+    "react": "~0.11.2"
+  }
+}

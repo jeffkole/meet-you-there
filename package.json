@@ -10,10 +10,12 @@
     "ejs": "~0.8.5",
     "express": "~4.0.0",
     "http": "0.0.0",
+    "moment": "^2.8.3",
     "morgan": "^1.3.2",
     "opentok": "^2.2.4",
     "path": "^0.4.9",
-    "react-calendar-component": "0.0.4",
+    "react": "^0.11.2",
+    "react-calendar": "^0.2.0",
     "shorturl": "0.0.3"
   }
 }

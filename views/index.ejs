@@ -3,19 +3,27 @@
   <head>
     <link href="/css/main.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/JSXTransformer.js"></script>
-    <script src="//fb.me/react-with-addons-0.11.2.js"></script>
     <title>Get a Room</title>
   </head>
   <body>
       <!-- USER GREETING -->
     <div id="welcome"></div>
+    <div id="calendar"></div>
     <br>
       <!-- NAV BAR -->
     <div id="navBar"></div>
 
+    <!-- BEGIN BOWER SCRIPTS -->
+  <script type="text/javascript" src="/bower_components/react/react.js"></script>
+  <script type="text/javascript" src="/bower_components/react/JSXTransformer.js"></script>
+  <script type="text/javascript" src="/bower_components/react/react-with-addons.js"></script>
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- END BOWER SCRIPTS -->
+
+    <!-- BEGIN DEVELOPER SCRIPTS -->
   <script type="text/jsx" src="/js/ui/navBar.jsx"></script>
   <script type="text/jsx" src="/js/ui/dynamicText.jsx"></script>
+    <!-- END DEVELOPER SCRIPTS -->
   </body>
 </html>
+

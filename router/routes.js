@@ -1,3 +1,4 @@
+
 var OpenTok = require('opentok')
  ,  shorturl = require('shorturl');
 
@@ -13,16 +14,16 @@ app.get('/stream', function( req, res ) {
   var sessionId = app.get('sessionId');
   var token = opentok.generateToken( sessionId );
       shorturl( req.headers.referer + "stream/?room_id=" + sessionId, function( result ) {
-      render( result )
+      renderAuth( result )
 });
-      function render( result ) {
-  res.render('stream.ejs', {
+
+  function renderAuth( result ) {
+    res.render('stream.ejs', {
     apiKey: process.env.KEY,
     sessionId: sessionId,
     token: token,
     getARoom: result
   });
-}
-
+  }
  })
 }
