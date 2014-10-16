@@ -16,6 +16,9 @@ body {
         display: inline-block;
     }
 }
+#calendar {
+    margin-left: 41%;
+}
 #setReservation {
     /*display: counter-increment: ;*/
 }
@@ -91,3 +94,4 @@ p {
     padding-top: 10px;
     font-size: 1em;
 }
+
