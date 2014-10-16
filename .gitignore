@@ -1,5 +1,5 @@
-/node_modules
-/bower_compenents
+node_modules
+bower_compenents
 *.log
 .env
 env
