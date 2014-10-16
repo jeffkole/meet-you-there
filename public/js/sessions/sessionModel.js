@@ -3,8 +3,8 @@ function SessionModel() {
         return new SessionModel()
 };
 
-SessionModel.prototype.initialize = function( controller ) {
-  this.session = controller.session;
+SessionModel.prototype.initialize = function( session ) {
+  this.session = session;
 }
 
 SessionModel.prototype.checkDevice = function() {

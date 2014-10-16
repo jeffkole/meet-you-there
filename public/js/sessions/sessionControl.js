@@ -9,9 +9,9 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
   this.SessionView = SessionView;
   this.SessionDispatch = SessionDispatch;
 
-    this.SessionModel.initialize( this );
-    this.SessionView.initialize( this );
-    this.SessionDispatch.initialize.call( this ) ;
+    this.SessionModel.initialize( this.session );
+    this.SessionView.initialize( this.session );
+    this.SessionDispatch.initialize( this.session, this.SessionDispatch.dispatcher.bind( this ) );
 
       this.bindListeners();
   }
