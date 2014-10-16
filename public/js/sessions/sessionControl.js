@@ -9,13 +9,12 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
   this.SessionDispatch = SessionDispatch;
   this.session = TB.initSession( sessionId );
     // we initialize the event listeners and the dispatcher so it's ready to fire on user
-    // and hardware events before they happen. We inject the session and the controller.
+    // and hardware events before they happen. We retain the session via call() and inject the controller.
     // The controller gives us the callback to invoke sessionStart which will connect the user.
     // It also gives us all the methods that the dispatcher invokes, which will be registered
     // as callbacks when fired upon. The will be fired upon when an event listener in the controller
     // invokes the corresponding behavior in the model.
 
-    // This way, the listeners and dispatcher are ready and able before any events take place.
     // listen --> trigger --> dispatch --> respond
     // Dispatcher = High-Level Bevavior, Controller = Mid-Level Behavior, Models & Views = Low-Level Behavior
     this.SessionDispatch.initialize.call( this, SessionControl.prototype ) ;
