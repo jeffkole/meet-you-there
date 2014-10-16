@@ -17,14 +17,13 @@ body {
 }
 #copyAndPaste {
     color: #fff;
-    font-size 1.2em;
+    font-size: 1.2em;
 }
 #roomLink {
     color: #41C7C2;
 }
 #welcome {
     color: #41C7C2;
-
     font-size: 1.2em;
 }
 #stream {
