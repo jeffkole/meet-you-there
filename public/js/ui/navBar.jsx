@@ -9,8 +9,6 @@ var NavBar = React.createClass({
     clicked: function( index ){
         this.setState( { focused: index } );
 
-        // console.log( this );
-        // console.log( this.props.navItems );
 
         if( index == 0 && location.href != 'http://localhost:3000/'){
             location.href = 'http://localhost:3000/'
@@ -18,8 +16,8 @@ var NavBar = React.createClass({
          if( index == 1 && location.href != 'http://localhost:3000/stream'){
             location.href = 'http://localhost:3000/stream'
         }
-         if( index == 2 && location.href != 'http://localhost:3000/reserve'){
-            location.href = 'http://localhost:3000/reserve'
+         if( index == 2 && location.href != 'http://localhost:3000/reservations'){
+            location.href = 'http://localhost:3000/reservations'
         }
 
         if( index == 3 && location.href != 'http://localhost:3000/about'){
@@ -52,7 +50,7 @@ var NavBar = React.createClass({
 });
 
 React.renderComponent(
-    <NavBar navItems={ ['Home', 'Stream Now', 'Make Reservations ', 'About'] } />,
+    <NavBar navItems={ ['Home', 'Stream Now', 'Make Reservations ', 'Learn More'] } />,
     document.getElementById("navBar")
 );
 

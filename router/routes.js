@@ -4,10 +4,12 @@ var OpenTok = require('opentok')
 
 module.exports = function( app ) {
 
+// HOME
 app.get('/', function( req, res ) {
     res.render('index.ejs')
 })
 
+// STREAM NOW
 app.get('/stream', function( req, res ) {
 
   var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
@@ -26,4 +28,12 @@ app.get('/stream', function( req, res ) {
   });
   }
  })
+
+// RESERVATIONS
+app.get('/reservations', function( req, res ) {
+  res.render('reservations.ejs')
+
+
+});
+
 }

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-    <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
-    <title>Get a Room</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/css/main.css" rel="stylesheet" type="text/css">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+      <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"></script>
+      <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
+    <title>Meet Me There</title>
   </head>
   <body>
 
@@ -13,20 +16,29 @@
         var sessionId = '<%= sessionId %>';
         var token = '<%= token %>';
 </script>
-
-    <!-- USER GREETING -->
-    <div id="welcome"></div>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="nav navbar-nav">
+         <!-- BEGIN USER GREETING AND REACT NAV BAR -->
+        <a href="/" id="welcome"></a>
+         <a  id="navBar"></a>
+         <!-- END USER GREETING AND REACT NAV BAR -->
+      </div>
+    </div>
+  </div>
+</nav>
     <!-- STREAM LINK STATIC -->
-    <p id="copyAndPaste">copy and paste the link and get a room!</p>
+    <p id="copyAndPaste">copy the link, send to a friend, and they'll meet you here.&nbsp;
     <!-- STREAM LINK PARTIAL -->
-    <p id="roomLink" href=""><%= getARoom %></p>
-    <br>
+    <span id="roomLink"><%= getARoom %></span></p>
     <!-- SUBSCRIBER COUNT -->
-    <input type="text" id="connectionCountField" value="0"></input>
-    <br>
-    <br>
-    <!-- NAV BAR -->
-    <div id="navBar"></div>
+    <!-- <input type="text" id="connectionCountField" value="0"></input> -->
     <!-- STREAM LINK -->
     <div id="subscribers"><div id="streamId"></div></div>
     <!-- STREAM -->
@@ -37,9 +49,7 @@
   <script type="text/javascript" src="/bower_components/react/react.js"></script>
   <script type="text/javascript" src="/bower_components/react/JSXTransformer.js"></script>
   <script type="text/javascript" src="/bower_components/react/react-with-addons.js"></script>
-  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/bower_components/moment/min/moment-with-locales.min.js"></script>
-  <script type="text/javascript" src="/bower_components/datepair/dist/datepair.js"></script>
     <!-- END BOWER SCRIPTS -->
 
     <!-- BEGIN DEVELOPER SCRIPTS -->
