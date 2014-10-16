@@ -1,46 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
-    <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/JSXTransformer.js"></script>
-    <script src="//fb.me/react-with-addons-0.11.2.js"></script>
-    <title>Get a Room</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="/css/main.css" rel="stylesheet" type="text/css">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+      <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"></script>
+      <script src="//static.opentok.com/webrtc/v2.2/js/TB.min.js"></script>
+    <title>Meet You There</title>
   </head>
   <body>
+
  <script type="text/javascript">
         var apiKey = '<%= apiKey %>';
         var sessionId = '<%= sessionId %>';
         var token = '<%= token %>';
 </script>
-    <div id="welcome"></div>
-    <!-- <div id="devicePanelContainer"></div> -->
-    <!-- <div id="publisherContainer"></div> -->
-    <p id="copyAndPaste">copy and paste link and get a room!</p>
-   <p id="roomLink" href=""><%= getARoom %></p>
-   <br>
-<input type="text" id="connectionCountField" value="0"></input>
-<br>
-<br>
-
-    <div id="navBar"></div>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="nav navbar-nav">
+         <!-- BEGIN USER GREETING AND REACT NAV BAR -->
+        <a href="/" id="welcome"></a>
+         <a  id="navBar"></a>
+         <!-- END USER GREETING AND REACT NAV BAR -->
+      </div>
+    </div>
+  </div>
+</nav>
+    <!-- STREAM LINK STATIC -->
+    <p id="copyAndPaste">copy the link, send to a friend, and they'll meet you here.&nbsp;
+    <!-- STREAM LINK PARTIAL -->
+    <span id="roomLink"><%= getARoom %></span></p>
+    <!-- SUBSCRIBER COUNT -->
+    <!-- <input type="text" id="connectionCountField" value="0"></input> -->
+    <!-- STREAM LINK -->
     <div id="subscribers"><div id="streamId"></div></div>
-    <div id="stream"></div>
-    <script type="text/jsx">
-      /** @jsx React.DOM */
-      React.renderComponent(
-        <h1>get a room</h1>,
-        document.getElementById('welcome')
-      );
-    </script>
+    <!-- RENDER SESSION DATA -->
 
+<div id="streamButtonRow"class="row">
+  <a href="#" id="checkDevice" class="btn btn-success"><i class="icon-home"></i>devices</a>
+  <a href="#" id="sendInvite" class="btn btn-success"><i class="icon-home"></i>invite</a>
+  <a href="#" id="startRecording" class="btn btn-success"><i class="icon-home"></i>record</a>
+  <a href="#" id="stopRecording" class="btn btn-success"><i class="icon-home"></i>stop</a>
+  <a href="#" id="endSession" class="btn btn-success"><i class="icon-home"></i>diconnect</a>
+</div>
+
+
+    <!-- STREAM -->
     <div id="stream"></div>
 
-  <script src="/js/sessionController.js"></script>
-  <script src="/js/sessionTracker.js"></script>
-  <script src="/js/sessionPanel.js"></script>
-  <script type="text/jsx" src="/js/navBar.jsx"></script>
+
+    <!-- BEGIN BOWER SCRIPTS -->
+  <script type="text/javascript" src="/bower_components/react/react.js"></script>
+  <script type="text/javascript" src="/bower_components/react/JSXTransformer.js"></script>
+  <script type="text/javascript" src="/bower_components/react/react-with-addons.js"></script>
+  <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/bower_components/velocity/velocity.ui.min.js"></script>
+    <!-- END BOWER SCRIPTS -->
+
+    <!-- BEGIN DEVELOPER SCRIPTS -->
+  <script type="text/javascript" src="/js/init.js"></script>
+  <script type="text/javascript" src="/js/sessions/sessionControl.js"></script>
+  <script type="text/javascript" src="/js/sessions/sessionDispatch.js"></script>
+  <script type="text/javascript" src="/js/sessions/sessionModel.js"></script>
+  <script type="text/javascript" src="/js/sessions/sessionView.js"></script>
+
+  <script type="text/jsx" src="/js/ui/renderNav.jsx"></script>
+  <script type="text/jsx" src="/js/ui/renderSlogan.jsx"></script>
+     <!-- END DEVELOPER SCRIPTS -->
   </body>
 </html>

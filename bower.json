@@ -1,0 +1,31 @@
+{
+  "name": "meet-me-there",
+  "version": "0.0.1",
+  "homepage": "https://github.com/scottjason/react-dot-stream",
+  "authors": [
+    "scottjason <scottleejason@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.11.2",
+    "moment": "2.1.0",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "velocity": "~1.1.0"
+  },
+  "resolutions": {
+    "moment": "2.1.0",
+    "jquery": ">=1.8.0 <2.1.0",
+    "bootstrap": ">=2.0.4 <3.0"
+  }
+}
