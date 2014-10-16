@@ -1,6 +1,8 @@
-node_modules
-bower_compenents
 *.log
+log
 .env
 env
 .DS_STORE
+/node_modules
+/npm-debug.log
+/bower_components
