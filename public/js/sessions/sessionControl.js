@@ -15,9 +15,7 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
 
     this.bindListeners;
   }
-  // These listen for both hardware and user events.
-  // When they invoke a callback in the model, they trigger functions that cause the dispatcher to fire events.
-  // When they invoke a callback in the view, they invoke non-TokBox related behavior and render on their own without the dispatcher.
+  // these listen for app-related user events, tokbox events are handled by the dispatcher
 SessionControl.prototype.bindListeners = function() {
   document.getElementById( "checkDevice" ).addEventListener( "click", this.SessionModel.userCheckDevice, false );
   document.getElementById( "sendInvite" ).addEventListener( "click", this.SessionModel.userSendInvite, false );
@@ -41,8 +39,8 @@ SessionControl.prototype.sessionStart = function() {
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
       console.log( "Session connected. Now connecting client" );
-    }
   }
+}
 
 SessionControl.prototype.connectionCreated = function( event ) {
 // session object instantiated and we are publishing to the session within the callback of the connection created event
@@ -53,11 +51,12 @@ SessionControl.prototype.connectionCreated = function( event ) {
 
 SessionControl.prototype.sessionDisconnected = function( event ) {
   this.SessionView.renderDisconnection( event.reason );
-  }
+}
 
 SessionControl.prototype.streamCreated = function( event ) {
   console.log("stream created")
 }
+
 SessionControl.prototype.streamDestroyed = function( event ) {
   this.SessionView.renderDestroyed( event.reason );
 }

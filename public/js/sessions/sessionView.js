@@ -7,7 +7,7 @@ SessionView.prototype.initialize = function( session ) {
     this.session = session;
 };
 
-// THE FUNCTIONS BELOW CORRESPOND TO EVENTS FIRED BY THE DISPATCHER, TOKBOX / HARDWARE RELATED
+// the functions below corresspond to events fired by the dispatcher, tokbox-related events
 SessionView.prototype.renderSessionStatus = function( callback ) {
   setTimeout( callback, 400 );
   $( "#statusButton" ).velocity( "fadeIn", { visibility : "visible", duration : 300, display: "inline-block" } );
@@ -20,26 +20,26 @@ SessionView.prototype.renderDisconnectOption = function() {
 SessionView.prototype.renderStreamCreated = function( event ) {
   var streamConnectionId = event.stream.connection.connectionId;
 }
-SessionView.prototype.userDestoryStream = function() {
 
-}
+SessionView.prototype.userDestoryStream = function() {}
+
 SessionView.prototype.renderStreamDestroyed = function( reason ) {
   console.log( "The stream " + event.stream.name + " has ended for the following reason: " + reason );
 }
 
-SessionView.prototype.renderError = function() {};
+SessionView.prototype.renderError = function() {}
 
-SessionView.prototype.renderException = function() {};
+SessionView.prototype.renderException = function() {}
 
-SessionView.prototype.renderGreeting = function() {};
+SessionView.prototype.renderGreeting = function() {}
 
-// THE FUNCTIONS BELOW CORRESPOND TO NON-TOKBOX RELATED EVENTS, NOT INVOKED BY THE DISPATCHER
-SessionView.prototype.collectLogin = function() {};
+// the functions below correspond to non-tokbox related events, not invoked by the dispatcher
+SessionView.prototype.collectLogin = function() {}
 
-SessionView.prototype.renderLoginSuccess = function() {};
+SessionView.prototype.renderLoginSuccess = function() {}
 
-SessionView.prototype.collectSignup = function() {};
+SessionView.prototype.collectSignup = function() {}
 
-SessionView.prototype.renderSignupSuccess = function() {};
+SessionView.prototype.renderSignupSuccess = function() {}
 
-var sessionView = new SessionView();
+var sessionView = new SessionView()
