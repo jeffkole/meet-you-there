@@ -13,7 +13,7 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
     this.SessionView.initialize( this.session );
     this.SessionDispatch.initialize( this.session, this.SessionDispatch.dispatcher.bind( this ) );
 
-    this.bindListeners;
+      this.bindListeners();
   }
   // these listen for app-related user events, tokbox events are handled by the dispatcher
 SessionControl.prototype.bindListeners = function() {
@@ -22,7 +22,8 @@ SessionControl.prototype.bindListeners = function() {
   document.getElementById( "startRecording" ).addEventListener( "click", this.SessionModel.userStartRecord, false );
   document.getElementById( "stopRecording" ).addEventListener( "click", this.SessionModel.userStopRecord, false );
 }
-
+// these also listen for app-related user events, but these DOM elements are hidden until successfuly
+// client-connection, listeners attached when elems are ready.
 SessionControl.prototype.bindRevealedListeners = function() {
   document.getElementById( "statusButton" ).addEventListener( "click", this.SessionModel.userConnectStatus, false );
   document.getElementById( "disconnectButton" ).addEventListener( "click", this.SessionModel.userDisconnect, false );

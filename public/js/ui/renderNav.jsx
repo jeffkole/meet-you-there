@@ -17,11 +17,11 @@ var NavBar = React.createClass({
             location.href = 'http://localhost:3000/stream'
         }
          if( index == 2 && location.href != 'http://localhost:3000/reservations'){
-            location.href = 'http://localhost:3000/reservations'
+            // location.href = 'http://localhost:3000/reservations'
         }
 
         if( index == 3 && location.href != 'http://localhost:3000/about'){
-            location.href = 'http://localhost:3000/about'
+            // location.href = 'http://localhost:3000/about'
         }
   },
     render: function() {
