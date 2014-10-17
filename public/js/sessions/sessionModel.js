@@ -7,21 +7,18 @@ SessionModel.prototype.initialize = function( session ) {
   this.session = session;
 }
 
-SessionModel.prototype.checkDevice = function() {
-  console.log( this.session )
-};
+SessionModel.prototype.checkDevice = function() {};
 
-SessionModel.prototype.sendInvite = function() {};
+SessionModel.prototype.sendInvite = function() {}
 
-SessionModel.prototype.startRecording = function() {};
+SessionModel.prototype.startRecording = function() {}
 
-SessionModel.prototype.stopRecording = function() {};
+SessionModel.prototype.stopRecording = function() {}
 
-SessionModel.prototype.uploadFile = function() {};
+SessionModel.prototype.uploadFile = function() {}
 
-SessionModel.prototype.sendFile = function() {};
+SessionModel.prototype.sendFile = function() {}
 
-SessionModel.prototype.endSession = function(e) {
-};
+SessionModel.prototype.endSession = function() {}
 
 var sessionModel = new SessionModel();
