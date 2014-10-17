@@ -8,12 +8,12 @@ SessionView.prototype.initialize = function( session ) {
 };
 
 // THE FUNCTIONS BELOW CORRESPOND TO EVENTS FIRED BY THE DISPATCHER, TOKBOX / HARDWARE RELATED
-SessionView.prototype.renderSessionConnected = function( event ) {
-    var connectionState = event.target.currentState;
+SessionView.prototype.renderSessionStatus = function() {
+  $( "#statusButton" ).velocity( "fadeIn", { visibility : "visible", duration : 300, display: "inline-block" } );
 }
 
-SessionView.prototype.renderSessionDisconnected = function() {
-  var connectionState = event.target.currentState;
+SessionView.prototype.renderDisconnectOption = function() {
+  $( "#disconnectButton" ).velocity( "fadeIn", { visibility : "visible", duration : 300, display: "inline-block" } );
 }
 
 SessionView.prototype.renderStreamCreated = function( event ) {
