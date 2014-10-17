@@ -11,7 +11,7 @@ function SessionControl() {
 SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, SessionView ) {
 /*
   injecting the dispatcher, model and view into the controller
-  injecting the session into the model & view, initializing the dispatcher binding to rendered DOM elements
+  injecting the session into the model & view, initializing the dispatcher and binding to rendered DOM elements
 */
   this.SessionModel = SessionModel;
   this.SessionView = SessionView;
