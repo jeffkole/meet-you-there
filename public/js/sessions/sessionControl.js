@@ -43,7 +43,8 @@ SessionControl.prototype.sessionConnected = function( event ) {
 }
 
 SessionControl.prototype.connectionCreated = function( event ) {
-// session object instantiated and we are publishing to the session within the callback of the connection created event
+// session object instantiated, client has connected and now we are publishing to the session
+// within the callback of the connection created event
   this.session.publish( this.publisher );
     this.SessionView.renderDisconnectOption();
     this.SessionView.renderSessionStatus( this.bindRevealedListeners );
