@@ -8,13 +8,23 @@ SessionView.prototype.initialize = function( session ) {
 };
 
 // THE FUNCTIONS BELOW CORRESPOND TO EVENTS FIRED BY THE DISPATCHER, TOKBOX / HARDWARE RELATED
-SessionModel.prototype.renderDisconnection = function( reason ) {
-  console.log( reason )
-};
+SessionView.prototype.renderSessionConnected = function( event ) {
+    var connectionState = event.target.currentState;
+}
 
-SessionModel.prototype.renderDestoryed = function( reason ) {
+SessionView.prototype.renderSessionDisconnected = function() {
+  var connectionState = event.target.currentState;
+}
+
+SessionView.prototype.renderStreamCreated = function( event ) {
+  var streamConnectionId = event.stream.connection.connectionId;
+}
+SessionView.prototype.userDestoryStream = function() {
+
+}
+SessionView.prototype.renderStreamDestroyed = function( reason ) {
   console.log( "The stream " + event.stream.name + " has ended for the following reason: " + reason );
-};
+}
 
 SessionView.prototype.renderError = function() {};
 

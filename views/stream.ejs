@@ -36,11 +36,21 @@
     <!-- STREAM LINK STATIC -->
     <p id="copyAndPaste">copy the link, send to a friend, and they'll meet you here.&nbsp;
     <!-- STREAM LINK PARTIAL -->
-    <span id="roomLink"><%= getARoom %></span></p>
+
     <!-- SUBSCRIBER COUNT -->
-    <!-- <input type="text" id="connectionCountField" value="0"></input> -->
+
+    <!-- <input type="text" id="subscriberContainer" value="0"></input> -->
+
     <!-- STREAM LINK -->
-    <div id="subscribers"><div id="streamId"></div></div>
+        <form id="shareFormUrl" class="form">
+        <input type="text" id="roomLink" value="<%= getARoom %>"></input>
+      </form>
+    </p>
+      <div id="timer"></div>
+
+            <div id='myPublisherDiv'></div>
+            <div id='subscribersDiv'></div>
+        <!-- <input type="text" id="publisherElement" value="0"></input> -->
     <!-- RENDER SESSION DATA -->
 
 <div id="streamButtonRow"class="row">

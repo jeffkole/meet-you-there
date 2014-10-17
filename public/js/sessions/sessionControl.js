@@ -28,20 +28,33 @@ SessionControl.prototype.bindListeners = function() {
 // all of the below function are handlers that respond when the dispatcher fires
 SessionControl.prototype.sessionStart = function() {
   this.publisher = TB.initPublisher( apiKey, "publisher", { width:800, height:400 } )
+  this.session.publish( this.publisher );
   this.session.connect( apiKey, token );
   }
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
-      this.SessionView.renderGreeting( this.session );
+    console.log("sessionConnected executed");
+      // this.SessionView.renderSessionConnected( event );
     }
+    // console.log( this.publisher )
   }
 
 SessionControl.prototype.sessionDisconnected = function( event ) {
   this.SessionView.renderDisconnection( event.reason );
   }
 
+SessionControl.prototype.streamCreated = function( event ) {
+  console.log("stream created")
+}
 SessionControl.prototype.streamDestroyed = function( event ) {
   this.SessionView.renderDestroyed( event.reason );
+  }
+
+  SessionControl.prototype.connectionCreated = function( event ) {
+    console.log("connectionCreated executed")
+      console.log( this.session.capabilities )
+    // console.log( this.session.sessionInfo )
+    // console.log( event)
   }
 
 var sessionControl = new SessionControl();

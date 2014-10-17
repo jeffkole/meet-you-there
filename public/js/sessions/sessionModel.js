@@ -21,6 +21,7 @@ SessionModel.prototype.uploadFile = function() {};
 
 SessionModel.prototype.sendFile = function() {};
 
-SessionModel.prototype.endSession = function() {};
+SessionModel.prototype.endSession = function(e) {
+};
 
 var sessionModel = new SessionModel();

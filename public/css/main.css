@@ -8,8 +8,12 @@ body {
     padding-right: 15px;
     background-color: #2b2b2b !important;
 }
-/*  -- CENTER NAV --  */
 
+input {
+    background-color: #000;
+    margin-left: 46.5% !important;
+}
+/*  -- CENTER NAV --  */
 .navbar-nav {
     width: 100%;
     text-align: center;
@@ -88,13 +92,13 @@ h3#meetJumboTitle {
     border: 1px solid #37ada7;
 }
 #copyAndPaste {
-    visibility: hidden;
+    visibility: visible;
     color: #fff;
     font-size: 0.9em;
     text-align: center;
 }
 #roomLink {
-    visibility: hidden;
+    visibility: visible;
     color: #41C7C2;
     font-size: 0.9em;
     text-align: center;
