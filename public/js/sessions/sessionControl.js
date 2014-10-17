@@ -37,7 +37,8 @@ SessionControl.prototype.bindListeners = function() {
 */
 SessionControl.prototype.bindRevealedListeners = function() {
   document.getElementById( "statusButton" ).addEventListener( "click", this.SessionModel.userConnectStatus, false );
-  document.getElementById( "disconnectButton" ).addEventListener( "click", this.userDisconnect.bind( this ), false );
+  document.getElementById( "disconnectButton" ).addEventListener( "click", this.userDisconnect, false );
+      console.log( "Node count after render : ", document.childNodes.length, "and the current time is:" + Date.now() );
 }
 
 /*--------------------------------------------------------------------------------
@@ -57,7 +58,7 @@ SessionControl.prototype.sessionStart = function() {
 */
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
-      console.log( "Step 2 of 2 Complete : Session connected." );
+      console.log( "Step 2 of 2 Complete : Client connection verified." );
   }
   else {
     alert( "We cannot establish a connection due to the following error : " + event.reason );
@@ -70,20 +71,22 @@ SessionControl.prototype.sessionConnected = function( event ) {
 */
 SessionControl.prototype.connectionCreated = function( event ) {
 
-  this.publisher = TB.initPublisher( apiKey, "publisher", { width:800, height:400 } );
-  this.session.publish( this.publisher );
+    streamCompletedAt = Date.now();
+    timeToComplete = ( clickedOnStreamAt - streamCompletedAt ) + " ms";
+    console.log( "Step 3 of 3 Is Complete. Time taken from click to complete : "  +  timeToComplete );
+
+      this.publisher = TB.initPublisher( apiKey, "publisher", { width:800, height:400 } );
+      this.session.publish( this.publisher );
 
 /*
   renders hidden DOM elements : connection status and disconnect option
   passes the callback bindReaveleadListeners and invokes collect publisher data
 */
-    this.SessionView.renderSessionStatus( this.bindReaveleadListeners );
+    this.SessionView.renderSessionStatus( this.bindRevealedListeners );
     this.SessionView.renderDisconnectOption();
     // this.Model.collectPubData();
 
-    console.log( "Step 3 of 3 Complete : Session connected. Now rendering connection options & collecting publisher data." );
 }
-
 /*-----------------------------------------------------------
   HANDLERS FOR LIVE CONNECTIONS
 ------------------------------------------------------------*/
@@ -120,7 +123,9 @@ SessionControl.prototype.streamDestroyed = function( event ) {
 */
 SessionControl.prototype.userPubStream = function( e ) {
   event.preventDefault();
-  this.sessionStart();
+  clickedOnStreamAt = Date.now();
+
+    this.sessionStart();
 }
 
 /*

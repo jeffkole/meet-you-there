@@ -12,12 +12,15 @@ var NavBar = React.createClass({
 
         if( index == 0 && location.href != 'http://localhost:3000/'){
             location.href = 'http://localhost:3000/'
+
         }
          if( index == 1 && location.href != 'http://localhost:3000/stream'){
             location.href = 'http://localhost:3000/stream'
+
         }
          if( index == 2 && location.href != 'http://localhost:3000/reservations'){
             // location.href = 'http://localhost:3000/reservations'
+
         }
 
         if( index == 3 && location.href != 'http://localhost:3000/about'){
