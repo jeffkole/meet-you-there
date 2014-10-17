@@ -8,8 +8,7 @@ SessionView.prototype.initialize = function( session ) {
 };
 
 // the functions below corresspond to events fired by the dispatcher, tokbox-related events
-SessionView.prototype.renderSessionStatus = function( callback ) {
-  setTimeout( callback, 400 );
+SessionView.prototype.renderSessionStatus = function() {
   $( "#statusButton" ).velocity( "fadeIn", { visibility : "visible", duration : 300, display: "inline-block" } );
 }
 
@@ -41,5 +40,6 @@ SessionView.prototype.renderLoginSuccess = function() {}
 SessionView.prototype.collectSignup = function() {}
 
 SessionView.prototype.renderSignupSuccess = function() {}
+
 
 var sessionView = new SessionView()

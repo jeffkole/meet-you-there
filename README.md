@@ -53,9 +53,10 @@ Before  connecting to a session, instantiate a Session object.
 
 1. init session
 2. connect to session
-
+3. Publish the publisher to the session
 
 -------------------------------------------------------------------------------
+
 **SESSION OBJECT INIT**
 
 var session = TB.initSession(apiKey, sessionId);
@@ -107,6 +108,7 @@ Initialize a Publisher object : session.publish(publisher);
 
 There is a difference between initializing a publisher object and publishing a stream to the Session . When you initialize a publisher, a local display of the published stream is created on the web. However, other users in the Session cannot see the stream yet, because the call to session.publish() has not been made.
 
+-------------------------------------------------------------------------------
 
 **The streamCreated Event and StreamEvent Object**
 
@@ -116,3 +118,27 @@ Event : "streamCreated"
 Methods :   subscriber = session.subscribe(event.stream, targetElement); 
 
 The return value of the subscribe() method is the Subscriber object. 
+
+-------------------------------------------------------------------------------
+
+**StreamEvent**
+
+Event : streamCreated
+Methid : subscriber = session.subscribe(event.stream, targetElement);
+Event : streamDestroyed 
+
+StreamEvent is an event that can have the type "streamCreated" or "streamDestroyed". These events are dispatched by the Session object when another client starts or stops publishing a stream to a Session. 
+
+**For a local client's stream, the Publisher object dispatches the event.**
+
+-------------------------------------------------------------------------------
+
+**The streamCreated event is dispatched by a Publisher object**
+
+Publishes a stream :
+var publisher = session.publish(targetElement)
+
+Add an event listener for when the streaming starts :
+.on("streamCreated", function(event) {
+    console.log("Publisher started streaming.");
+);
