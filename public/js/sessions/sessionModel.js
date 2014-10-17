@@ -1,13 +1,15 @@
 function SessionModel() {
       if (!( this instanceof SessionModel ))
         return new SessionModel()
-};
+}
 
 SessionModel.prototype.initialize = function( session ) {
   this.session = session;
 }
 
-SessionModel.prototype.checkDevice = function() {};
+SessionModel.prototype.collectPubData = function( publisher, callback ) {
+
+}
 
 SessionModel.prototype.sendInvite = function() {}
 

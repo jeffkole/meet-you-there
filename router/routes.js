@@ -1,15 +1,13 @@
-
 var OpenTok = require('opentok')
- ,  shorturl = require('shorturl');
+ ,  shorturl = require('shorturl')
 
 module.exports = function( app ) {
 
-// HOME
 app.get('/', function( req, res ) {
-    res.render('index.ejs')
+
+      res.render('pages/index')
 })
 
-// STREAM NOW
 app.get('/stream', function( req, res ) {
 
   var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
@@ -20,7 +18,7 @@ app.get('/stream', function( req, res ) {
 });
 
   function renderAuth( result ) {
-    res.render('stream.ejs', {
+    res.render('pages/stream', {
     apiKey: process.env.KEY,
     sessionId: sessionId,
     token: token,
@@ -29,11 +27,8 @@ app.get('/stream', function( req, res ) {
   }
  })
 
-// RESERVATIONS
 app.get('/reservations', function( req, res ) {
-  res.render('reservations.ejs')
+  res.render('pages/reservations')
 
-
-});
-
+  });
 }

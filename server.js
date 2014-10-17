@@ -1,4 +1,5 @@
 var express = require('express')
+  , engine = require('ejs-locals')
   , http = require('http')
   , OpenTok = require('opentok')
   , path = require('path')
@@ -19,6 +20,7 @@ opentok.createSession(function( err, session ) {
   callback();
 });
 
+app.engine('ejs', engine);
 // set port, template engine
 app.set('view engine', 'ejs');
 app.set( 'port', process.env.PORT || 3000 );

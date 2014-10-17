@@ -1,3 +1,3 @@
-window.onload = function(){
-  sessionControl.initialize( sessionDispatch, sessionModel, sessionView )
-};
+$( document ).ready( function() {
+    sessionControl.initialize( sessionDispatch, sessionModel, sessionView )
+})

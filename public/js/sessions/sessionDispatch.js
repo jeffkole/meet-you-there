@@ -16,7 +16,6 @@ SessionDispatch.prototype.dispatcher = function() {
   this.session.on( "streamDestroyed", this.streamDestroyed, this );
 
   // we just initialized the dispatcher so its ready before any events occur, now creating new session object
-  this.sessionStart();
 }
 
 var sessionDispatch = new SessionDispatch();
