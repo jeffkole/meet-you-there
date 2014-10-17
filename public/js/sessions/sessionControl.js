@@ -30,8 +30,6 @@ SessionControl.prototype.sessionStart = function() {
   this.publisher = TB.initPublisher( apiKey, "publisher", { width:800, height:400 } )
   this.session.connect( apiKey, token );
   }
-
-
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
       this.SessionView.renderGreeting( this.session );
@@ -40,6 +38,10 @@ SessionControl.prototype.sessionConnected = function( event ) {
 
 SessionControl.prototype.sessionDisconnected = function( event ) {
   this.SessionView.renderDisconnection( event.reason );
+  }
+
+SessionControl.prototype.streamDestroyed = function( event ) {
+  this.SessionView.renderDestroyed( event.reason );
   }
 
 var sessionControl = new SessionControl();
