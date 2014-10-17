@@ -8,7 +8,8 @@ SessionView.prototype.initialize = function( session ) {
 };
 
 // THE FUNCTIONS BELOW CORRESPOND TO EVENTS FIRED BY THE DISPATCHER, TOKBOX / HARDWARE RELATED
-SessionView.prototype.renderSessionStatus = function() {
+SessionView.prototype.renderSessionStatus = function( callback ) {
+  setTimeout( callback, 400 );
   $( "#statusButton" ).velocity( "fadeIn", { visibility : "visible", duration : 300, display: "inline-block" } );
 }
 
