@@ -92,7 +92,7 @@ SessionControl.prototype.connectionCreated = function( event ) {
 ------------------------------------------------------------*/
 
 /*
-  when a user clicks on disconnect or is disconnected involuntarily
+  when a session disconnects
 */
 SessionControl.prototype.sessionDisconnected = function( event ) {
   this.SessionView.renderDisconnection( event.reason );
