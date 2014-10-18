@@ -5,19 +5,19 @@
 
 to run in your local environment :
 
-**git clone https://github.com/scottjason/meet-you-there.git**
+    $ **git clone https://github.com/scottjason/meet-you-there.git**
 
 then in the root directory type :
 
-**npm install && bower install**
+    $ **npm install && bower install**
 
 then again in the root directory type :
 
-**touch .env**
+    $ **touch .env**
 
 then copy and paste your creditentials into the .env file from TokBox
 
-type **node server** and connect to http://localhost:3000/
+    $ **node server** and connect to http://localhost:3000/
     
 -------------------------------------------------------------------------------
 
