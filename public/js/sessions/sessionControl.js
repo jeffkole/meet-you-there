@@ -11,21 +11,22 @@ function SessionControl() {
 SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, SessionView ) {
 /*
   injecting the dispatcher, model and view into the controller
-  injecting the session into the model & view, initializing the dispatcher and binding to rendered DOM elements
+  injecting the session into the model & view, initializing the session dispatche and binding to rendered DOM elements
+  for performance reasons, we create a new session object on client connect whether or not they decide to connect
 */
   this.SessionModel = SessionModel;
   this.SessionView = SessionView;
   this.SessionDispatch = SessionDispatch;
 
-    this.SessionModel.initialize( this.session );
-    this.SessionView.initialize( this.session );
-    this.SessionDispatch.initialize( this.session, this.SessionDispatch.dispatcher.bind( this ) );
+    this.SessionModel.initSession( this.session );
+    this.SessionView.initSession( this.session );
+    this.SessionDispatch.initSession( this.session, this.SessionDispatch.sessionDispatch.bind( this ) );
 
       this.bindListeners();
 }
 
 SessionControl.prototype.bindListeners = function() {
-  document.getElementById( "pubStreamButton" ).addEventListener( "click", this.userPubStream.bind( this ), false );
+  document.getElementById( "newPubStream" ).addEventListener( "click", this.newUserPub.bind( this ), false );
   document.getElementById( "checkDevice" ).addEventListener( "click", this.SessionModel.userCheckDevice, false );
   document.getElementById( "sendInvite" ).addEventListener( "click", this.SessionModel.userSendInvite, false );
   document.getElementById( "startRecording" ).addEventListener( "click", this.SessionModel.userStartRecord, false );
@@ -46,7 +47,7 @@ SessionControl.prototype.bindRevealedListeners = function() {
 ----------------------------------------------------------------------------------*/
 
 /*
-  init new session object
+  init new session object on user-click-stream
 */
 SessionControl.prototype.sessionStart = function() {
   this.session.connect( apiKey, token );
@@ -71,22 +72,40 @@ SessionControl.prototype.sessionConnected = function( event ) {
 */
 SessionControl.prototype.connectionCreated = function( event ) {
 
+/* declares a new publisher object */
+  this.publisher= OT.initPublisher('pubStreamContainer',  null, this.SessionModel.collectNewPubData.bind( this, this.publisher ), false );
+
+/*
+  injects the publisher object into the model, view and dispatch
+ */
+    this.SessionModel.initPublisher( this.publisher );
+    this.SessionView.initPublisher( this.publisher );
+    this.SessionDispatch.initPublisher( this.publisher );
+
+/* collects and styles the publisher camera container ( for the view of themselves ) */
+  this.pubElement = document.getElementById( this.publisher.id );
+
+    this.pubElement.style.width = "360px"
+    this.pubElement.style.height = "270px"
+    this.pubElement.style.backgroundColor = "#000"
+    this.pubElement.style.border = "1px solid #41C7C2"
+
+/* injects the publisher into the session, which will trigger the dispatcher to fire on session.publish */
+  // this.session.connect( apiKey, token );
+  this.session.publish( this.publisher );
+/* logs tests */
     streamCompletedAt = Date.now();
     timeToComplete = ( clickedOnStreamAt - streamCompletedAt ) + " ms";
     console.log( "Step 3 of 3 Is Complete. Time taken from click to complete : "  +  timeToComplete );
-
-      this.publisher = TB.initPublisher( apiKey, "publisher", { width:800, height:400 } );
-      this.session.publish( this.publisher );
 
 /*
   renders hidden DOM elements : connection status and disconnect option
   passes the callback bindReaveleadListeners and invokes collect publisher data
 */
-    this.SessionView.renderSessionStatus( this.bindRevealedListeners );
-    this.SessionView.renderDisconnectOption();
-    // this.Model.collectPubData();
-
+  this.SessionView.renderSessionStatus( this.bindRevealedListeners );
+  this.SessionView.renderDisconnectOption();
 }
+
 /*-----------------------------------------------------------
   HANDLERS FOR LIVE CONNECTIONS
 ------------------------------------------------------------*/
@@ -95,18 +114,17 @@ SessionControl.prototype.connectionCreated = function( event ) {
   when a session disconnects
 */
 SessionControl.prototype.sessionDisconnected = function( event ) {
+
   this.SessionView.renderDisconnection( event.reason );
 }
 
 /*
   when a new stream is created
 */
-SessionControl.prototype.streamCreated = function( event ) {
-  this.subscriber = session.subscribe( event.stream, "#subStream" );
-    console.log( "A new stream has been created : " + event.stream );
-}
+SessionControl.prototype.streamCreated = function( event ) {}
 
 /*
+
   when a stream is destroyed
 */
 SessionControl.prototype.streamDestroyed = function( event ) {
@@ -121,11 +139,11 @@ SessionControl.prototype.streamDestroyed = function( event ) {
 /*
   when a user clicks on create new stream
 */
-SessionControl.prototype.userPubStream = function( e ) {
+SessionControl.prototype.newUserPub = function( e ) {
   event.preventDefault();
   clickedOnStreamAt = Date.now();
-
     this.sessionStart();
+
 }
 
 /*
