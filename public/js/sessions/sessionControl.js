@@ -20,7 +20,7 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
 
     this.SessionModel.initSession( this.session );
     this.SessionView.initSession( this.session );
-    this.SessionDispatch.initSession( this.session, this.SessionDispatch.sessionDispatch.bind( this ) );
+    this.SessionDispatch.initSession( this.session, this.SessionDispatch.dispatchSessionEvents.bind( this ) );
 
       this.bindListeners();
 }
