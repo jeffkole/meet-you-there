@@ -3,8 +3,12 @@ function SessionView() {
         return new SessionView()
 };
 
-SessionView.prototype.initialize = function( session ) {
+SessionView.prototype.initSession = function( session ) {
     this.session = session;
+};
+
+SessionView.prototype.initPublisher = function( publisher ) {
+    this.publisher = publisher;
 };
 
 // the functions below corresspond to events fired by the dispatcher, tokbox-related events

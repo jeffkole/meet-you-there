@@ -15,7 +15,7 @@ var NavBar = React.createClass({
 
         }
          if( index == 1 && location.href != 'http://localhost:3000/stream'){
-            location.href = 'http://localhost:3000/stream'
+            location.href = 'http://localhost:3000/new_stream'
 
         }
          if( index == 2 && location.href != 'http://localhost:3000/reservations'){
@@ -53,7 +53,7 @@ var NavBar = React.createClass({
 });
 
 React.renderComponent(
-    <NavBar navItems={ ['Home', 'Stream Now', 'Make Reservations ', 'Learn More'] } />,
+    <NavBar navItems={ ['Home', 'New Stream', 'Active Streams', 'About'] } />,
     document.getElementById("navBar")
 );
 

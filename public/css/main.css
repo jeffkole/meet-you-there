@@ -50,12 +50,19 @@ input {
     color: #27ae60 !important;
     border-color: #27ae60;
 }
-#pubStreamButton {
+#newPubStream {
     background-color: #EEE !important;
     color: #41C7C2 !important;
     border-color: #41C7C2;
 }
 
+#pubStreamContainer {
+/*    background-color: #000 !important;
+    border-color: 1px solid #41C7C2 !important;
+    width: 300px;
+    height: 300px;
+    margin-left: 5% !important;*/
+}
 #checkDevice {
     background-color: #EEE !important;
     color: #41C7C2 !important;
