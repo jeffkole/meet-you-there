@@ -11,8 +11,8 @@ function SessionControl() {
 SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, SessionView ) {
 /*
   injecting the dispatcher, model and view into the controller
-  injecting the session into the model & view, initializing the session dispatche and binding to rendered DOM elements
-  for performance reasons, we create a new session object on client connect whether or not they decide to connect
+  injecting the session into the dispatcher,  model and view,
+  initializing the session dispatcher with the session object and binding to rendered DOM elements
 */
   this.SessionModel = SessionModel;
   this.SessionView = SessionView;
@@ -47,7 +47,7 @@ SessionControl.prototype.bindRevealedListeners = function() {
 ----------------------------------------------------------------------------------*/
 
 /*
-  init new session object on user-click-stream
+   on user-click-stream, we inoke the dispatcher with session.connect and initialize a new client connection
 */
 SessionControl.prototype.sessionStart = function() {
   this.session.connect( apiKey, token );
@@ -55,7 +55,7 @@ SessionControl.prototype.sessionStart = function() {
 }
 
 /*
-  session.connect callback verifying the client's connection state
+  sessionConnected callback verifying the client's connection state
 */
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
@@ -72,8 +72,11 @@ SessionControl.prototype.sessionConnected = function( event ) {
 */
 SessionControl.prototype.connectionCreated = function( event ) {
 
-/* declares a new publisher object */
-  this.publisher= OT.initPublisher('pubStreamContainer',  null, this.SessionModel.collectNewPubData.bind( this, this.publisher ), false );
+/*
+  declares a new publisher object, passes in DOM element, no options, and the
+  callback to pass the new publisher object with the controller's context
+*/
+  this.publisher = OT.initPublisher('pubStreamContainer',  null, this.SessionModel.collectNewPubData.bind( this, this.publisher ), false );
 
 /*
   injects the publisher object into the model, view and dispatch
@@ -90,9 +93,11 @@ SessionControl.prototype.connectionCreated = function( event ) {
     this.pubElement.style.backgroundColor = "#000"
     this.pubElement.style.border = "1px solid #41C7C2"
 
-/* injects the publisher into the session, which will trigger the dispatcher to fire on session.publish */
-  // this.session.connect( apiKey, token );
+/* injects the publisher into the session, which will trigger the callback to fire on the event publisherConnected
+   we can have the dispatcher be responsible for invoking this event by ommiting the callback
+*/
   this.session.publish( this.publisher );
+
 /* logs tests */
     streamCompletedAt = Date.now();
     timeToComplete = ( clickedOnStreamAt - streamCompletedAt ) + " ms";
@@ -100,7 +105,7 @@ SessionControl.prototype.connectionCreated = function( event ) {
 
 /*
   renders hidden DOM elements : connection status and disconnect option
-  passes the callback bindReaveleadListeners and invokes collect publisher data
+  passes the callback bindReaveleadListeners
 */
   this.SessionView.renderSessionStatus( this.bindRevealedListeners );
   this.SessionView.renderDisconnectOption();
@@ -137,13 +142,14 @@ SessionControl.prototype.streamDestroyed = function( event ) {
 ------------------------------------------*/
 
 /*
-  when a user clicks on create new stream
+  when a user clicks on create new stream, we initialize the connection
+  sessionStart will invoke session.connect and alert the dispatcher to begin the client connection process
 */
 SessionControl.prototype.newUserPub = function( e ) {
   event.preventDefault();
-  clickedOnStreamAt = Date.now();
-    this.sessionStart();
+    clickedOnStreamAt = Date.now();
 
+      this.sessionStart();
 }
 
 /*
