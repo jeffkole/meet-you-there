@@ -1,29 +1,19 @@
+<br>
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-12 column">
       <div class="jumbotron">
-
         <h2>Meet You There</h2>
-        <br>
+        <hr>
         <p id="welcomeText">
         The art of writing a letter is as old as the moon.
-        It's a wonderful way to communicate, to express and to grow.
+        <br>
+         It's a wonderful way to communicate, to express and to grow.
         <br>
         <br>
-        Today we have more ways of connecting than ever. And more ways to
-        create meaningful & lasting experiences.
+        Today we have more ways of connecting than ever.
         <br>
-        <br>
-        Start a video stream now with a friend or a colleague, a study buddy or
-        a loved one.
-        <br>
-        Share notes and files and pictures from New York City, or catch up and
-        just take it all in.
-        <br>
-        <br>
-        You can also make a reservation for a later time and we'll send you
-        both off a reminder with a link to connect.
-        </p>
+        And more ways to create meaningful & lasting experiences.</p>
       <form action="/login" id="loginForm" method="post" name="loginForm">
         <div class="form-group">
           <input class="form-control" name="email" placeholder="Email"  type="email" required>
@@ -36,13 +26,10 @@
 
       <br>
       <div id="logInOrSignUp">
-        <p>Not registered?<a id="thenSignup" href="/signup"> Signup!</a></p>
+        <p>Need an account?<a id="thenSignup" href="/signup"> Register!</a></p>
   <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div><% } %>
-
       </div>
-
-
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ function SessionControl() {
   instantiating the session onto the controller's constructor object
 */
     this.session = TB.initSession( sessionId );
-
+      console.log( this.session )
       if (!( this instanceof SessionControl ))
         return new SessionControl();
 }
@@ -27,7 +27,7 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
 }
 
 SessionControl.prototype.bindListeners = function() {
-  document.getElementById( "stream" ).addEventListener( "click", this.initPubStream.bind( this ), false );
+  document.getElementById( "streamLink" ).addEventListener( "click", this.initPubStream.bind( this ), false );
   // document.getElementById( "invite" ).addEventListener( "click", this.SessionModel.userSessionData, false );
   // document.getElementById( "reserve" ).addEventListener( "click", this.SessionModel.userHardwareSettings, false );
   // document.getElementById( "invite" ).addEventListener( "click", this.SessionModel.userSendInvite, false );

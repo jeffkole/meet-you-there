@@ -5,18 +5,26 @@ var dotenv = require('dotenv');
 
 module.exports = function( app, passport ) {
 
-    var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
-        sessionId = app.get('sessionId');
-        token = opentok.generateToken( sessionId );
 
+    // var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
+    // var sessionId = app.get('sessionId');
+    // var token = opentok.generateToken( sessionId );
 
 
     app.get('/', function( req, res ) {
-        res.render('index.ejs');
+       res.render('index.ejs')
+        //     apiKey: process.env.KEY,
+        //     sessionId: sessionId,
+        //     token: token
+        // });
     });
 
 
     app.get('/profile', function( req, res ) {
+              var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
+    var sessionId = app.get('sessionId');
+    var token = opentok.generateToken( sessionId );
+
           res.render('profile.ejs', {
             apiKey: process.env.KEY,
             sessionId: sessionId,
@@ -58,6 +66,8 @@ module.exports = function( app, passport ) {
         failureRedirect: '/signup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
+
+
 
 
     app.get('/connect/local', function( req, res ) {
