@@ -1,3 +1,4 @@
+var OpenTok = require('opentok')
 var dotenv = require('dotenv');
     dotenv.load();
 
@@ -11,17 +12,22 @@ module.exports = function( app, passport ) {
 
     // PROFILE SECTION
     app.get('/profile', function( req, res ) {
-        res.render('profile.ejs', req.user.local.email);
-    });
+    var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
+    var sessionId = app.get('sessionId');
+    var token = opentok.generateToken( sessionId );
+      // shorturl( req.headers.referer + "new_stream/?room_id=" + sessionId, function( result ) {
+      // renderAuth( result )
+});
 
-    // QUERY DATABASE FOR LOGGED-IN USER BUCKETS
-    app.post('/profile', function( req, res ) {
-        Bucket.find({
-            email: req.user.local.email
-        }, function( err, docs ) {
-            res.json(docs);
-        });
-    });
+  function renderAuth( result ) {
+    res.render('profile.ejs', {
+    apiKey: process.env.KEY,
+    sessionId: sessionId,
+    token: token
+    // getARoom: result
+  });
+  }
+
 
     // LOGOUT
     app.get('/logout', function( req, res ) {
@@ -52,7 +58,7 @@ module.exports = function( app, passport ) {
 
     // PROCESS SIGNUP FORM
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/stream', // redirect to the secure profile section
+        successRedirect: '/profile', // redirect to the secure profile section
         failureRedirect: '/signup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));

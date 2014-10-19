@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="full">
   <head>
-    <% include /partials/head %>
+    <% include /head/index %>
   </head>
   <body>
+    <script type="text/javascript">
+var apiKey = '<%= apiKey %>';
+var sessionId = '<%= sessionId %>';
+var token = '<%= token %>';
+</script>
     <%= include /partials/stream %>
     <%= include /scripts/stream %>
   </body>
