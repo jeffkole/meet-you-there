@@ -11,13 +11,8 @@ function SessionControl() {
 SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, SessionView ) {
 /*
   injecting the dispatcher, model and view into the controller
-  injecting the session into the dispatcher,  model and view,
-  initializing SessionDispatch with the session object and binding the callbacks to the current, execution context.
-
-  So in the functions these callbacks invoke, - this - will references the SessionControl object's function body.
-  We are doing this so the events the dispatcher responds to are synched with the same ( current ) session and publisher
-  objects as the one in charge of creating them and communicating with the model and view ( controller ).
-  We can't instantiate and pass in a publisher the way we did a session without rendering a camera request.
+  injecting the session into the dispatcher, model and view,
+  initializing SessionDispatch with the session object and binding the callback to the current execution context.
 */
   this.SessionModel = SessionModel;
   this.SessionView = SessionView;
@@ -44,8 +39,6 @@ SessionControl.prototype.bindListeners = function() {
 SessionControl.prototype.bindRevealedListeners = function() {
   document.getElementById( "status" ).addEventListener( "click", this.SessionModel.userConnectStatus, false );
   document.getElementById( "disconnect" ).addEventListener( "click", this.userDisconnect, false );
-
-  console.log( "Node count after render : ", document.childNodes.length, "and the current time is:" + Date.now() );
 }
 
 /*--------------------------------------------------------------------------------
@@ -53,7 +46,9 @@ SessionControl.prototype.bindRevealedListeners = function() {
 ----------------------------------------------------------------------------------*/
 
 /*
-   on user-click-stream, we inoke the dispatcher with session.connect and initialize a new client connection
+   on user click new stream, we inoke the dispatcher with session.connect and initialize a new client connection.
+   This also creates a new publisher object which will trigger the dispatcher and fire the events
+   we need to  create and render a new publisher object to the session
 */
 SessionControl.prototype.sessionStart = function() {
   this.session.connect( apiKey, token );
@@ -68,10 +63,9 @@ SessionControl.prototype.sessionStart = function() {
 */
 SessionControl.prototype.sessionConnected = function( event ) {
   if ( event.target.currentState === "connected" ) {
-      console.log( "Step 2 of 2 Complete : Client connection verified." );
 
-  }
-  else {
+    console.log( "Step 2 of 3 Complete : Client connection verified." );
+  } else {
     alert( "We cannot establish a connection due to the following error : " + event.reason );
   }
 }
@@ -81,12 +75,6 @@ SessionControl.prototype.sessionConnected = function( event ) {
   the publisher object and publishing it to the session within the callback of the connection created event
 */
 SessionControl.prototype.connectionCreated = function( event ) {
-
-/*
-  declares a new publisher object, passes in DOM element, no options, and the
-  callback to pass the new publisher object with the controller's context
-*/
-
 
 /* collects and styles the publisher camera container ( for the view of themselves ) */
   this.pubElement = document.getElementById( this.publisher.id );

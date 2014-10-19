@@ -1,6 +1,17 @@
+var async = require('async');
+var Bucket = require('./models/bucket.js');
+var geocoder = require('geocoder');
+var nodemailer = require('nodemailer');
 var dotenv = require('dotenv');
     dotenv.load();
 
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.sendFrom,
+        pass: process.env.gmailPass
+    }
+});
 
 module.exports = function( app, passport ) {
 
@@ -21,6 +32,54 @@ module.exports = function( app, passport ) {
         }, function( err, docs ) {
             res.json(docs);
         });
+    });
+      // convert address to geo, then save results to db, then send user email, then redirect
+  app.post('/success', function( req, res ) {
+        async.waterfall(
+            [
+                function( callback ) {
+                    geocoder.geocode(req.body.street + ', ' + req.body.city + ', ' + req.body.state + ', ' + req.body.zip,
+                        function( err, data ) {
+                            data.geoCodeResult = data;
+                            callback( err, {geoCodeResult:data})
+                        })
+                },
+                function( data, callback ) {
+                    var newBucket = new Bucket({
+                        email: req.user.local.email,
+                        _isActive: false,
+                        street: req.body.street,
+                        city: req.body.city,
+                        state: req.body.state,
+                        zip: req.body.zip,
+                        geoLat: data.geoCodeResult.results[0].geometry.location.lat,
+                        geoLng: data.geoCodeResult.results[0].geometry.location.lng,
+                        createdAt: new Date()
+                    })
+                    callback( null, newBucket );
+                },
+                function( newBucket, callback ) {
+                    newBucket.save();
+                    callback( null );
+                },
+                function( callback ) {
+                    console.log('made it')
+                    transporter.sendMail({
+                        from: 'noreply@compology.com',
+                        to: req.user.local.email,
+                        subject: 'New Compology Bucket Added!',
+                        html: "You've successfuly added a new bucket at " + req.body.street + ", " + req.body.city + ", " + req.body.state + ", " + req.body.zip + "."
+                    }, function( err, response ) {
+                        callback( err, response );
+                    });
+                }
+            ],
+            function( err, result ) {
+                res.redirect('/profile');
+                console.log( err || result );
+
+            }
+        )
     });
 
     // LOGOUT

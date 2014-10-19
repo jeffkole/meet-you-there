@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Compology Dashboard</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">`
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+  <link href="/css/profile.css" rel="stylesheet" type="text/css">
+
+  <style>
+    body {
+      padding-top: 0px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="masthead">
+      <nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-image" href="">
+              <img class="logoImg" src="../img/logo.png">
+            </a>
+            <p class="nav-bar-text" id="thankYou"></p>
+          </div>
+          <div class="navbar-header pull-left">
+            <p href="" class="fa fa-lightbulb-o" class="nav-text">&nbsp;&nbsp;smart client dashboard</p>
+          </div>
+          <div class="navbar-header pull-right">
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only"></span>
+              <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+
+            </button> <a id="logOut" href="/logout" class="btn btn-warning btn-sm">Logout</a>
+          </div>
+          <div class="collapse navbar-collapse navbar-left"></div>
+        </div>
+      </nav>
+    </div>
+    <!-- END MASTHEAD -->
+  </div>
+  <!-- END CONTAINER FLUID-->
+
+  <!-- BEGIN BODY -->
+  <div class="container">
+    <div class="grid">
+      <div class="col-1-2">
+        <div id="bucketsView" class="module">
+          <h4 class="fa fa-bitbucket" class="addNew">&nbsp;&nbsp;Add New Bucket</h4>
+          <p>Fill out the address form with the location of the bucket you'd like to add.
+            <br>
+            An email confirmation will be sent to your registered email.</p>
+            <p class="fa fa-check-square-o" class="validRequired">&nbsp;&nbsp;Valid address with zipcode required.</p>
+          <form id="addBucket" action="/success" method="post">
+            <div class="form-group">
+              <input id="street" placeholder="Street" type="text" class="form-control" name="street" required>
+            </div>
+            <div class="form-group">
+              <input id="city" placeholder="City" type="text" class="form-control" name="city" required>
+            </div>
+            <div class="form-group">
+              <input id="state" placeholder="State" type="text" class="form-control" name="state" required>
+            </div>
+            <div class="form-group">
+              <input id="zip" placeholder="Zip" type="text" class="form-control" name="zip" required>
+            </div>
+            <button type="submit" class="btn btn-warning btn-sm">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-1-2">
+        <div class="module">
+          <h4 class="fa fa-bitbucket" class="addNew">&nbsp;&nbsp;Bucket Summary</h4>
+          <p id="bucketCount"></p>
+          <ul id="listview" data-role="listview"></ul>
+          <div id="newUser"><p class="newUserAlert">&nbsp; Looks like we have a new user!</p>
+           <p class="newUserContent"> You haven't added any buckets yet.
+            <br>
+          Fill out the form on the left to start tracking.
+          </p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END BODY -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/2.4/jquery.liveaddress.min.js"></script>
+  <script>jQuery.LiveAddress("4183839462851044851");</script>
+
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false">></script>
+  <script src="/js/client.js"></script>
+</body>
+
+</html>

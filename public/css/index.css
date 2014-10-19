@@ -1,0 +1,35 @@
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: none;
+    background-color: transparent!important;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.full {
+    background: url(../img/background-writer.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+.jumbotron {
+    background-color: transparent!important
+}
+.jumbotron h1 {
+    color: #fff !important;
+}
+.jumbotron p {
+    color: #fff !important;
+}
+#pleaseLogin {
+    font-size: 1.5em !important;
+    color: #0cd6ad !important;
+}
+.btn {
+    background-color: #0cd6ad !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+#loginForm {
+    display: none;
+}
