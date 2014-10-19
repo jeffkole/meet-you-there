@@ -5,28 +5,24 @@ var dotenv = require('dotenv');
 
 module.exports = function( app, passport ) {
 
-    // HOME SECTION
+    var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
+        sessionId = app.get('sessionId');
+        token = opentok.generateToken( sessionId );
+
+
+
     app.get('/', function( req, res ) {
         res.render('index.ejs');
     });
 
-    // PROFILE SECTION
-    app.get('/profile', function( req, res ) {
-    var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
-    var sessionId = app.get('sessionId');
-    var token = opentok.generateToken( sessionId );
-      // shorturl( req.headers.referer + "new_stream/?room_id=" + sessionId, function( result ) {
-      // renderAuth( result )
-});
 
-  function renderAuth( result ) {
-    res.render('profile.ejs', {
-    apiKey: process.env.KEY,
-    sessionId: sessionId,
-    token: token
-    // getARoom: result
+    app.get('/profile', function( req, res ) {
+          res.render('profile.ejs', {
+            apiKey: process.env.KEY,
+            sessionId: sessionId,
+            token: token
+        });
   });
-  }
 
 
     // LOGOUT
