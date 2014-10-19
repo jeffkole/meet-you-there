@@ -1,51 +1,37 @@
+<br>
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-12 column">
       <div class="jumbotron">
 
         <h2>Meet You There</h2>
-        <br>
+        <hr>
         <p id="welcomeText">
         The art of writing a letter is as old as the moon.
-        It's a wonderful way to communicate, to express and to grow.
+        <br>
+         It's a wonderful way to communicate, to express and to grow.
         <br>
         <br>
-        Today we have more ways of connecting than ever. And more ways to
-        create meaningful & lasting experiences.
+        Today we have more ways of connecting than ever.
         <br>
-        <br>
-        Start a video stream now with a friend or a colleague, a study buddy or
-        a loved one.
-        <br>
-        Share notes and files and pictures from New York City, or catch up and
-        just take it all in.
-        <br>
-        <br>
-        You can also make a reservation for a later time and we'll send you
-        both off a reminder with a link to connect.
-        </p>
-
-   <form action="/signup" id="signupForm" method="post" name="signupForm">
-        <div class="form-group">
-          <input class="form-control" name="firstName" placeholder="First Name" type="text" required>
-        </div>
-
-         <div class="form-group">
-          <input class="form-control" name="lastName" placeholder="Last Name" type="text" required>
-        </div>
-
-        <div class="form-group">
-          <input class="form-control" name="email" placeholder="Email" type="email" required>
-        </div>
-
-        <div class="form-group">
-          <input class="form-control" name="password" placeholder="Password" type="password" required>
-        </div><button class="btn btn-warning btn-med" type="submit">Signup</button>
-      </form>
-
-
-
-      <br>
+        And more ways to create meaningful & lasting experiences.</p>
+<form action="/signup" class="form-inline" role="form" method="post">
+  <div class="form-group">
+    <input type="text"name="username" class="form-control" placeholder="Username" required>
+  </div>
+  <br>
+  <br>
+    <div class="form-group">
+    <input type="email" name="email" class="form-control"  placeholder="Enter Email" required>
+  </div>
+    <div class="form-group">
+    <input type="password" name="password" class="form-control"  placeholder="Password" required>
+  </div>
+  <br>
+  <br>
+  <button type="submit" class="btn btn-default">Register</button>
+</form>
+    <br>
 
       <div id="logInOrSignUp">
         <p>Already registered?<a id="thenSignup" href="/login"> Login!</a></p>

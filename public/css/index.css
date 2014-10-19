@@ -4,46 +4,116 @@ body {
     background: none;
     background-color: transparent!important;
     font-family: 'Raleway, sans-serif';
+    overflow-x: hidden;
 }
 .full {
-    background: url(../img/background-writer.jpg) no-repeat center center fixed;
+    background-color: #000;
+    background: url(../img/background-writer-profile.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover
+    background-size: cover;
 }
 .jumbotron {
-    background-color: transparent!important
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 0.95em;
+    background-color: transparent!important;
 }
-.jumbotron h2{
-    color: #fff !important;
-
+.jumbotron h2 {
+    margin-bottom: -6px !important;
+    font-family: 'Raleway, sans-serif';
+    color: #4183D7 !important;
 }
 .jumbotron p {
     color: #fff !important;
     font-size: 1.2em !important;
 }
 .btn {
-    background-color: #0cd6ad !important;
-    color: #000 !important;
+    background-color: #4183D7 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+}
+.jumbotron hr {
+    opacity: 0.3 !important;
     border-color: #fff !important;
 }
 #loginForm {
     max-width: 300px;
 }
+#loginButton {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+}
 #signupForm {
     max-width: 300px;
 }
 #loginOrSignUp {
-    color: #fff !important;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
     font-size: 0.8em !important;
 }
 a#thenSignup {
-    color: #0cd6ad !important;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
     font-size: 1.0em !important;
+    color: #4183D7 !important;
     padding-left: 4px;
 }
-
 a {
     text-decoration: none !important;
+}
+h2 {
+    font-weight: 300 !important;
+    font-family: 'Raleway, sans-serif' !important;
+    color: #4183D7 !important;
+}
+#newPubStream {
+    background-color: #EEE !important;
+    color: #41C7C2 !important;
+    border-color: #41C7C2;
+}
+#navOptions {
+    visibility: hidden;
+    display: none;
+    padding-bottom: 8px;
+    width: 475px;
+    padding-left: 42px !important;
+}
+#navBar {
+    display: none;
+}
+#status {
+    background-color: #EEE !important;
+    color: #27ae60 !important;
+    border-color: #27ae60;
+}
+#stream {
+    background-color: #EEE !important;
+    color: #41C7C2 !important;
+    border-color: #41C7C2;
+}
+#session {
+    background-color: #EEE !important;
+    color: #41C7C2 !important;
+    border-color: #41C7C2;
+}
+#settings {
+    background-color: #EEE !important;
+    color: #41C7C2 !important;
+    border-color: #41C7C2;
+}
+#invite {
+    background-color: #EEE !important;
+    color: #41C7C2 !important;
+    border-color: #41C7C2;
+}
+#disconnect {
+    background-color: #EEE !important;
+    color: #c0392b !important;
+    border-color: #c0392b;
+}
+p#makeSelection {
+    color: #e74c3c !important;
+    font-size: 1.1em !important;
 }

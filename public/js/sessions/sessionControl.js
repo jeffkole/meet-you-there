@@ -3,7 +3,8 @@ function SessionControl() {
   instantiating the session onto the controller's constructor object
 */
     this.session = TB.initSession( sessionId );
-
+    console.log( email )
+      console.log( this.session )
       if (!( this instanceof SessionControl ))
         return new SessionControl();
 }
@@ -27,10 +28,10 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
 }
 
 SessionControl.prototype.bindListeners = function() {
-  document.getElementById( "tempConnect" ).addEventListener( "click", this.userStream.bind( this ), false );
-  document.getElementById( "session" ).addEventListener( "click", this.SessionModel.userSessionData, false );
-  document.getElementById( "settings" ).addEventListener( "click", this.SessionModel.userHardwareSettings, false );
-  document.getElementById( "invite" ).addEventListener( "click", this.SessionModel.userSendInvite, false );
+  document.getElementById( "streamLink" ).addEventListener( "click", this.initPubStream.bind( this ), false );
+  // document.getElementById( "invite" ).addEventListener( "click", this.SessionModel.userSessionData, false );
+  // document.getElementById( "reserve" ).addEventListener( "click", this.SessionModel.userHardwareSettings, false );
+  // document.getElementById( "invite" ).addEventListener( "click", this.SessionModel.userSendInvite, false );
 }
 
 /*
@@ -149,11 +150,14 @@ SessionControl.prototype.publisherDisconnected = function( event ) {
   when a user clicks on create new stream, we initialize the connection
   sessionStart will invoke session.connect and alert the dispatcher to begin the client connection process
 */
-SessionControl.prototype.userStream = function( e ) {
+SessionControl.prototype.initPubStream = function( e ) {
   event.preventDefault();
     clickedOnStreamAt = Date.now();
-
       this.sessionStart();
+
+    $( "#loggedInGreeting" ).velocity( "fadeOut", 500 )
+
+
 }
 
 /*

@@ -1,7 +1,7 @@
-var express = require('express')
-  , engine = require('ejs-locals')
-  , http = require('http')
-  , passport = require('passport')
+var express      = require('express')
+  , engine       = require('ejs-locals')
+  , http         = require('http')
+  , passport     = require('passport')
   , flash        = require('connect-flash')
   , path         = require('path')
   , OpenTok      = require('opentok')
@@ -18,6 +18,8 @@ var express = require('express')
 /* pass passort to be configured */
 require('./config/passport')( passport );
 
+mongoose.connect( database.URL );
+
 /*  create new OpenTok instance */
 var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
 
@@ -25,10 +27,11 @@ var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
 opentok.createSession(function( err, session ) {
   if ( err ) throw err;
   app.set( 'sessionId', session.sessionId );
-  callback();
-});
 
-// app.engine( 'ejs', engine );
+    startServer();
+ });
+
+app.engine( 'ejs', engine );
 app.set( 'view engine', 'ejs' );
 app.set( 'port', process.env.PORT || 3000 );
 app.use( express.static( __dirname + '/public') );
@@ -49,45 +52,40 @@ app.use( session({
     resave: true,
     saveUninitialized: true
 }));
+
 app.use( passport.initialize() );
 app.use( passport.session() );
 app.use( flash() );
-// Create the database connection
-
 
 /* Database Connection Events */
 
-mongoose.connect( database.URL );
-
-// When successfully connected
 mongoose.connection.on('connected', function () {
   console.log( 'Mongoose succesfully connected to : ' + database.URL );
 });
 
-// If the connection throws an error
+/*  if the connection throws an error */
 mongoose.connection.on('error',function (err) {
   console.log( 'Mongoose connection error : ' + err );
 });
 
-// When the connection is disconnected
+/*  when the connection is disconnected*/
 mongoose.connection.on('disconnected', function () {
   console.log( 'Mongoose has disconnected' );
 });
 
-// If the Node process ends, close the Mongoose connection
+/*  If the Node process ends, close the Mongoose connection */
 process.on('SIGINT', function() {
   mongoose.connection.close(function () {
     console.log( 'Mongoose has disconnected through app termination' );
-    process.exit(0);
+    process.exit( 0 );
   });
 });
-
 
 /* load routes, pass in configured app w passport and sessionId */
 require('./router/routes.js')( app, passport );
 
-function callback() {
+function startServer() {
 http.createServer( app ).listen( app.get( 'port' ), function(){
-  console.log( 'Express server listening on port ' + app.get( 'port' ));
-});
+  console.log( 'Express server successfully listening on port : ' + app.get( 'port' ));
+ });
 }
