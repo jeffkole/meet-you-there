@@ -1,40 +1,90 @@
 var express = require('express')
   , engine = require('ejs-locals')
   , http = require('http')
-  , OpenTok = require('opentok')
-  , path = require('path')
+  , passport = require('passport')
+  , flash        = require('connect-flash')
+  , path         = require('path')
+  , OpenTok      = require('opentok')
   , morgan       = require('morgan')
   , cookieParser = require('cookie-parser')
   , bodyParser   = require('body-parser')
-  , dotenv = require('dotenv')
+  , mongoose     = require('mongoose')
+  , session      = require('express-session')
+  , database     = require('./config/database.js')
+  , dotenv       = require('dotenv')
   , app = express();
     dotenv.load();
 
-// create new OpenTok instance
+/* pass passort to be configured */
+require('./config/passport')( passport );
+
+/*  create new OpenTok instance */
 var opentok = new OpenTok( process.env.KEY, process.env.SECRET );
 
-// create new OpenTok session, init server on session-success
+/* create new OpenTok session, init server on session success */
 opentok.createSession(function( err, session ) {
   if ( err ) throw err;
   app.set( 'sessionId', session.sessionId );
   callback();
 });
 
-app.engine('ejs', engine);
-// set port, template engine
-app.set('view engine', 'ejs');
+// app.engine( 'ejs', engine );
+app.set( 'view engine', 'ejs' );
 app.set( 'port', process.env.PORT || 3000 );
-app.use(express.static(__dirname + '/public'));
+app.use( express.static( __dirname + '/public') );
 
-// set joint path for js and css, add support for bodyparser
+/* set joint path for js and css, add support for bodyparser */
 app.use( express.static( path.join(__dirname, 'public') ));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-app.use( morgan('dev') ); // logs requests to the console
-app.use( cookieParser() ); // read cookies ( auth )
+app.use( morgan('dev') );
+app.use( cookieParser() );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ));
 
-require('./router/routes.js')( app ); // load routes, pass in configured app ( w sessionId )
+/* set passport dependencies on app */
+app.use( session({
+    secret: 'cookie_secret',
+    name: 'cookie_name',
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
+app.use( passport.initialize() );
+app.use( passport.session() );
+app.use( flash() );
+// Create the database connection
+
+
+/* Database Connection Events */
+
+mongoose.connect( database.URL );
+
+// When successfully connected
+mongoose.connection.on('connected', function () {
+  console.log( 'Mongoose succesfully connected to : ' + database.URL );
+});
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {
+  console.log( 'Mongoose connection error : ' + err );
+});
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {
+  console.log( 'Mongoose has disconnected' );
+});
+
+// If the Node process ends, close the Mongoose connection
+process.on('SIGINT', function() {
+  mongoose.connection.close(function () {
+    console.log( 'Mongoose has disconnected through app termination' );
+    process.exit(0);
+  });
+});
+
+
+/* load routes, pass in configured app w passport and sessionId */
+require('./router/routes.js')( app, passport );
 
 function callback() {
 http.createServer( app ).listen( app.get( 'port' ), function(){

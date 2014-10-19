@@ -1,0 +1,49 @@
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: none;
+    background-color: transparent!important;
+    font-family: 'Raleway, sans-serif';
+}
+.full {
+    background: url(../img/background-writer.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+.jumbotron {
+    background-color: transparent!important
+}
+.jumbotron h2{
+    color: #fff !important;
+
+}
+.jumbotron p {
+    color: #fff !important;
+    font-size: 1.2em !important;
+}
+.btn {
+    background-color: #0cd6ad !important;
+    color: #000 !important;
+    border-color: #fff !important;
+}
+#loginForm {
+    max-width: 300px;
+}
+#signupForm {
+    max-width: 300px;
+}
+#loginOrSignUp {
+    color: #fff !important;
+    font-size: 0.8em !important;
+}
+a#thenSignup {
+    color: #0cd6ad !important;
+    font-size: 1.0em !important;
+    padding-left: 4px;
+}
+
+a {
+    text-decoration: none !important;
+}
