@@ -1,13 +1,31 @@
-<% if (message.length > 0) { %>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="jumbotron">
+        <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div><% } %>
 
-      <div class="alert alert-danger">
-        <%= message %>
-      </div><% } %>
-      <hr>
-
-
-      <!-- BEGIN LOGIN FORM -->
-
+        <h2>Meet You There</h2>
+        <br>
+        <p id="welcomeText">
+        The art of writing a letter is as old as the moon.
+        It's a wonderful way to communicate, to express and to grow.
+        <br>
+        <br>
+        Today we have more ways of connecting than ever. And more ways to
+        create meaningful & lasting experiences.
+        <br>
+        <br>
+        Start a video stream now with a friend or a colleague, a study buddy or
+        a loved one.
+        <br>
+        Share notes and files and pictures from New York City, or catch up and
+        just take it all in.
+        <br>
+        <br>
+        You can also make a reservation for a later time and we'll send you
+        both off a reminder with a link to connect.
+        </p>
       <form action="/login" id="loginForm" method="post" name="loginForm">
         <div class="form-group">
           <input class="form-control" name="email" placeholder="Email"  type="email" required>
@@ -18,11 +36,20 @@
         </div><button class="btn btn-warning btn-med" type="submit">Login</button>
       </form>
 
-      <!-- END LOGIN FORM -->
-
       <br>
-      <div class="otherOptions">
-        <p>Don't have an account? <a href="/signup">Signup</a></p>
+      <div id="notRegistered">
+        <p>Not registered?<a id="thenSignup" href="/signup"> Signup!</a></p>
 
-        <p>Or go <a href="/">home</a>.</p>
       </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

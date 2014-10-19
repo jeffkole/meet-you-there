@@ -3,7 +3,7 @@ body {
     margin-bottom: 50px;
     background: none;
     background-color: transparent!important;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Raleway, sans-serif';
 }
 .full {
     background: url(../img/background-writer.jpg) no-repeat center center fixed;
@@ -15,14 +15,33 @@ body {
 .jumbotron {
     background-color: transparent!important
 }
-.jumbotron h1 {
+.jumbotron h2{
     color: #fff !important;
+
 }
 .jumbotron p {
     color: #fff !important;
+    font-size: 1.2em !important;
 }
 .btn {
     background-color: #0cd6ad !important;
     color: #000 !important;
     border-color: #fff !important;
+}
+#loginForm {
+    max-width: 300px;
+}
+
+#notRegistered {
+    color: #fff !important;
+    font-size: 0.8em !important;
+}
+a#thenSignup {
+    color: #0cd6ad !important;
+    font-size: 1.0em !important;
+    padding-left: 4px;
+}
+
+a {
+    text-decoration: none !important;
 }
