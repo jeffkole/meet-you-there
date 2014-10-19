@@ -21,15 +21,8 @@ body {
 .jumbotron p {
     color: #fff !important;
 }
-#pleaseLogin {
-    font-size: 1.5em !important;
-    color: #0cd6ad !important;
-}
 .btn {
     background-color: #0cd6ad !important;
     color: #000 !important;
     border-color: #fff !important;
-}
-#loginForm {
-    display: none;
 }
