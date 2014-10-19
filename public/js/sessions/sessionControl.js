@@ -153,8 +153,11 @@ SessionControl.prototype.publisherDisconnected = function( event ) {
 SessionControl.prototype.initPubStream = function( e ) {
   event.preventDefault();
     clickedOnStreamAt = Date.now();
-
       this.sessionStart();
+
+    $( "#loggedInGreeting" ).velocity( "fadeOut", 500 )
+
+
 }
 
 /*
