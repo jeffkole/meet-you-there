@@ -3,6 +3,7 @@ function SessionControl() {
   instantiating the session onto the controller's constructor object
 */
     this.session = TB.initSession( sessionId );
+    console.log( email )
       console.log( this.session )
       if (!( this instanceof SessionControl ))
         return new SessionControl();
