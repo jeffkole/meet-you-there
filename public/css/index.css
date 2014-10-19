@@ -31,8 +31,10 @@ body {
 #loginForm {
     max-width: 300px;
 }
-
-#notRegistered {
+#signupForm {
+    max-width: 300px;
+}
+#loginOrSignUp {
     color: #fff !important;
     font-size: 0.8em !important;
 }
