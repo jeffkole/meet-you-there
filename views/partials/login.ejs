@@ -2,8 +2,6 @@
   <div class="row clearfix">
     <div class="col-md-12 column">
       <div class="jumbotron">
-        <% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div><% } %>
 
         <h2>Meet You There</h2>
         <br>
@@ -39,6 +37,8 @@
       <br>
       <div id="notRegistered">
         <p>Not registered?<a id="thenSignup" href="/signup"> Signup!</a></p>
+  <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div><% } %>
 
       </div>
 
