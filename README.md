@@ -18,11 +18,11 @@ then again in the root directory, type :
 
 In the .env file, store the following environmental variables, quotes are not necessary :
 
-api key to : **KEY**
-api secret to : **SECRET**
-api token to : **TOKEN**
-api session to : **SESSION**
-mongo uri to : **MONGO_URI**
+    api key to : KEY
+    api secret to : SECRET
+    api token to : TOKEN
+    api session to : SESSION
+    mongo uri to : MONGO_URI
 
 then back in the terminal, in the root directory type :
 
