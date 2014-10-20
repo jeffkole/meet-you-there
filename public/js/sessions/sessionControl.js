@@ -1,15 +1,14 @@
-function SessionControl() {
+function SessionControl () {
 /*
   instantiating the session onto the controller's constructor object
 */
     this.session = TB.initSession( sessionId );
-    console.log( email )
-      console.log( this.session )
+
       if (!( this instanceof SessionControl ))
         return new SessionControl();
 }
 
-SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, SessionView ) {
+SessionControl.prototype.initialize = function ( SessionDispatch, SessionModel, SessionView ) {
 /*
   injecting the dispatcher, model and view into the controller
   injecting the session into the dispatcher, model and view,
@@ -27,7 +26,7 @@ SessionControl.prototype.initialize = function( SessionDispatch, SessionModel, S
   this.bindListeners();
 }
 
-SessionControl.prototype.bindListeners = function() {
+SessionControl.prototype.bindListeners = function () {
   document.getElementById( "streamLink" ).addEventListener( "click", this.initPubStream.bind( this ), false );
   // document.getElementById( "invite" ).addEventListener( "click", this.SessionModel.userSessionData, false );
   // document.getElementById( "reserve" ).addEventListener( "click", this.SessionModel.userHardwareSettings, false );
@@ -37,7 +36,7 @@ SessionControl.prototype.bindListeners = function() {
 /*
   binds listeners to DOM elemenets that are hidden to begin with, and rendered on a successful connection
 */
-SessionControl.prototype.bindRevealedListeners = function() {
+SessionControl.prototype.bindRevealedListeners = function () {
   document.getElementById( "status" ).addEventListener( "click", this.SessionModel.userConnectStatus, false );
   document.getElementById( "disconnect" ).addEventListener( "click", this.userDisconnect, false );
 }
@@ -51,7 +50,8 @@ SessionControl.prototype.bindRevealedListeners = function() {
    This also creates a new publisher object which will trigger the dispatcher and fire the events
    we need to  create and render a new publisher object to the session
 */
-SessionControl.prototype.sessionStart = function() {
+SessionControl.prototype.sessionStart = function () {
+
   this.session.connect( apiKey, token );
   this.publisher = OT.initPublisher( "pubContainer",  null, this.SessionModel.collectNewPubData.bind( this, this.publisher ), false );
   this.SessionDispatch.pubEvents( this.publisher );
@@ -62,12 +62,12 @@ SessionControl.prototype.sessionStart = function() {
 /*
   sessionConnected callback verifying the client's connection state
 */
-SessionControl.prototype.sessionConnected = function( event ) {
+SessionControl.prototype.sessionConnected = function ( event ) {
   if ( event.target.currentState === "connected" ) {
 
     console.log( "Step 2 of 3 Complete : Client connection verified." );
   } else {
-    alert( "We cannot establish a connection due to the following error : " + event.reason );
+    console.log( "We cannot establish a connection due to the following error : " + event.reason );
   }
 }
 
@@ -75,7 +75,7 @@ SessionControl.prototype.sessionConnected = function( event ) {
   the session object has been instantiated, the client has connected and now we are instantiating
   the publisher object and publishing it to the session within the callback of the connection created event
 */
-SessionControl.prototype.connectionCreated = function( event ) {
+SessionControl.prototype.connectionCreated = function () {
 
 /* collects and styles the publisher camera container ( for the view of themselves ) */
   this.pubElement = document.getElementById( this.publisher.id );
@@ -110,7 +110,7 @@ SessionControl.prototype.connectionCreated = function( event ) {
 /*
   when a session disconnects
 */
-SessionControl.prototype.sessionDisconnected = function( event ) {
+SessionControl.prototype.sessionDisconnected = function ( event ) {
 
   this.SessionView.renderDisconnection( event.reason );
 }
@@ -118,13 +118,13 @@ SessionControl.prototype.sessionDisconnected = function( event ) {
 /*
   when a new stream is created
 */
-SessionControl.prototype.streamCreated = function( event ) {}
+SessionControl.prototype.streamCreated = function ( event ) {}
 
 /*
 
   when a stream is destroyed
 */
-SessionControl.prototype.streamDestroyed = function( event ) {
+SessionControl.prototype.streamDestroyed = function ( event ) {
   this.SessionView.renderDestroyed( event.reason );
     console.log( "The stream has been destroyed because : " + event.reason );
 }
@@ -133,13 +133,12 @@ SessionControl.prototype.streamDestroyed = function( event ) {
   HANDLERS FOR LIVE PUBLISHER EVENTS
 ------------------------------------------------------------*/
 
-SessionControl.prototype.publisherConnected = function( event ) {
+SessionControl.prototype.publisherConnected = function ( event ) {
   console.log( "publisher is now connected.")
 }
-SessionControl.prototype.publisherDisconnected = function( event ) {
+SessionControl.prototype.publisherDisconnected = function ( event ) {
   console.log( "publisher has disconnected.")
 }
-
 
 /*-------------------------------------------------------------------
    HANDLERS FOR USER EVENTS THAT ARE REGISTERED WITH THE DISPATCHER
@@ -150,14 +149,17 @@ SessionControl.prototype.publisherDisconnected = function( event ) {
   when a user clicks on create new stream, we initialize the connection
   sessionStart will invoke session.connect and alert the dispatcher to begin the client connection process
 */
-SessionControl.prototype.initPubStream = function( e ) {
+SessionControl.prototype.initPubStream = function ( event ) {
   event.preventDefault();
-    clickedOnStreamAt = Date.now();
+/*
+we remove all the user-greeting-make-a-selection DOM elements and the space they require
+before the video element is published using Velocity.js, an extremely fast, JavaScript library that
+doesn't rely on jQuery. See performance testing here : http://julian.com/research/velocity/#duration
+*/
+$( "#loggedInGreeting" ).velocity({ opacity: 0 }, { duration: 01 });
+
+  clickedOnStreamAt = Date.now();
       this.sessionStart();
-
-    $( "#loggedInGreeting" ).velocity( "fadeOut", 500 )
-
-
 }
 
 /*
@@ -165,14 +167,14 @@ SessionControl.prototype.initPubStream = function( e ) {
   publisher or a subscriber so as not to inoke unintended events on
   other clients who either subscribed to or have published the session
 */
-SessionControl.prototype.userDisconnect = function( e ) {
+SessionControl.prototype.userDisconnect = function ( event ) {
     event.preventDefault();
 }
 
 /*
   when a publisher clicks on disconnect
 */
-SessionControl.prototype.disconnectPublisher = function( e ) {
+SessionControl.prototype.disconnectPublisher = function ( event ) {
     event.preventDefault();
 }
 
