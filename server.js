@@ -1,4 +1,4 @@
-previousTime = Date.now();
+startTime = Date.now();
 
 var express      = require('express')
   , engine       = require('ejs-locals')
@@ -104,6 +104,6 @@ process.on('SIGINT', function() {
 function startServer() {
 http.createServer( app ).listen( app.get( 'port' ), function(){
   console.log( 'Express server successfully listening on port : ' + app.get( 'port' ) );
-  console.log( 'Total connection time : ' + ( -( previousTime - Date.now() ) ) + 'ms' );
+  console.log( 'Total connection time : ' + ( Date.now() - startTime ) + 'ms' );
   });
 }
