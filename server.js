@@ -21,8 +21,7 @@ var express      = require('express')
 require('./config/passport')( passport );
 
 /*
-  here we are passing a callback to the function that initializes OpenTok as well as
-  passing our configured app and passport object to the router.
+  here we are passing a callback to the function that initializes OpenTok
   the callback will start the server.
   this initOpenTok function is called within the function body of the "database connected successfuly" event.
   this way, the app will initialize - after and based on - a successful database connection.
